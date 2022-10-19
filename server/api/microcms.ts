@@ -1,24 +1,17 @@
-import { getQuery } from 'h3'
-
 const config = useRuntimeConfig();
-
 let url: string = `https://${config.MICRO_CMS_SERVICE_DOMAIN}.microcms.io/api/v1/blog`
 
-export default async (req, res) => {
-  if (req.method != 'GET') {
-    console.log(req.method)
-    res.statusCode = 500
-    res.end()
-  }
+export default defineEventHandler(async (event) => {
 
+  const q = getQuery(event);
 
-  const post_id: string = !!getQuery(req).id ? "/" + getQuery(req).id : "";
-  const post_offset = !!getQuery(req).offset ? getQuery(req).offset : "";
-  const post_limit = !!getQuery(req).limit ? getQuery(req).limit : "10";
-  const post_order = !!getQuery(req).order ? getQuery(req).order : "";
-  const post_fields = !!getQuery(req).fields ? getQuery(req).fields : "";
-  const filter = getQuery(req).filter ? `${getQuery(req).filterKeyName}[contains]${getQuery(req).filter}` : "";
-  const query = !!getQuery(req).query ? getQuery(req).query : "";
+  const post_id: string = !!q.id ? "/" + q.id : "";
+  const post_offset = !!q.offset ? q.offset : "";
+  const post_limit = !!q.limit ? q.limit : "10";
+  const post_order = !!q.order ? q.order : "";
+  const post_fields = !!q.fields ? q.fields : "";
+  const filter = q.filter ? `${q.filterKeyName}[contains]${q.filter}` : "";
+  const query = !!q.query ? q.query : "";
 
   const parameters: string = `${post_id}?fields=${post_fields}&filters=${filter}&limit=${post_limit}&offset=${post_offset}&orders=${post_order}&q=${query}`;
   const ENDPOINT: string = url + encodeURI(parameters);
@@ -39,9 +32,7 @@ export default async (req, res) => {
     data = response
   })
 
-  const json = JSON.stringify(data)
+  const json = data
 
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'application/json')
-  res.end(json)
-}
+  return json;
+})
