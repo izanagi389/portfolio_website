@@ -35,7 +35,40 @@ a:visited {
     color: inherit;
 }
 
-main, aside {
+main,
+aside {
     min-height: 95vh;
     padding-top: 80px !important;
+}
+
+.blockquote-default {
+    position: relative;
+    padding: 15px 8px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: #efefef;
+    color: #555;
+    border-radius: 5px;
+    border-left: 3px solid #40c4ff;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+// .blockquote-default:before {
+//     display: inline-block;
+//     position: absolute;
+//     top: 13px;
+//     left: 15px;
+//     font-family: "Material Icons";
+//     content: "format_quote";
+//     color: #40c4ff;
+//     font-size: 28px;
+//     line-height: 1;
+//     font-weight: 900;
+// }
+
+.blockquote-default cite {
+    display: block;
+    color: #888;
+    font-size: .9em;
+    text-align: left;
 }
