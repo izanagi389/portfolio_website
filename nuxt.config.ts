@@ -1,4 +1,10 @@
 export default defineNuxtConfig({
+    // https://github.com/benoitdemaegdt/nuxt3-sitemap
+    modules: ['~/modules/sitemap'],
+    sitemap: {
+        hostname: process.env.HOMEPAGE_ROOT_URL,
+    },
+    // more configs
     typescript: {
         shim: false,
     },
@@ -92,7 +98,7 @@ export default defineNuxtConfig({
         RELETE_TITLES_API_URL: process.env.RELETE_TITLES_API_URL,
         SUGGEST_API_URL: process.env.SUGGEST_API_URL,
         SEARCH_API_URL: process.env.SEARCH_API_URL,
-        TOPIC_API_URL:  process.env.TOPIC_API_URL,
+        TOPIC_API_URL: process.env.TOPIC_API_URL,
         RELETE_TITLES_API_URL_V2: process.env.RELETE_TITLES_API_URL_V2
     },
 });
