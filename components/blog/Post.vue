@@ -65,6 +65,8 @@ const amenomuboko = async () => {
         }
     }).then((response) => {
         related_data.value = response;
+    }).catch((error) =>{
+        console.log(error.data)
     })
 
     const topic_url = config.TOPIC_API_URL + route.params.post_id;
@@ -77,6 +79,8 @@ const amenomuboko = async () => {
         }
     }).then((response) => {
         topic_list.value = response["corpus"].split(",");
+    }).catch((error) =>{
+        console.log(error.data)
     });
 
 }

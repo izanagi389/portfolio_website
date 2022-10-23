@@ -57,6 +57,8 @@ const yomotsuhirasaka = async () => {
         }
     }).then((response) => {
         searchContents.value = response;
+    }).catch((error) =>{
+        console.log(error.data)
     })
 }
 yomotsuhirasaka()

@@ -30,6 +30,8 @@ export default defineEventHandler(async (event) => {
   }
   ).then((response) => {
     data = response
+  }).catch((error) => {
+    console.log(error.data)
   })
 
   const json = data

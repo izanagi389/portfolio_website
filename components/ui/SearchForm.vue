@@ -105,6 +105,8 @@ watch(
                 for (const element of response[Symbol.iterator]()) {
                     if (!!element) { suggest_list.value.push(element["Word"]) }
                 }
+            }).catch((error) => {
+                console.log(error.data)
             });
         } else {
             suggest_list.value = [];
