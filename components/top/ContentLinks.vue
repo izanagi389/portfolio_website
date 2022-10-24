@@ -39,12 +39,13 @@ const cards: Array<CardDataType> = [
         href: "/blog/pages/1"
     },
     {
-        title: 'Japanese MIddle Name',
+        title: 'Japanese MIddle Name\n（リニューアル対応中につき停止中）',
         src: '/images/product/japaneseMidleName.webp',
         flex: 4,
         height: 250,
         width: 400,
-        href: "/app/middle_name/"
+        // href: "/app/middle_name/"
+        href: "#"
     },
 ]
 
