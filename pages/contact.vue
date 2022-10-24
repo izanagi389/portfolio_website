@@ -22,5 +22,9 @@ useHead({
         { property: 'og:url', hid: 'og:url', content: url },
         { name: 'robots', content: 'noindex,nofollow' }
     ],
+    script: [
+        { src: 'https://sdk.form.run/js/v2/formrun.js' }
+    ],
+
 })
 </script>

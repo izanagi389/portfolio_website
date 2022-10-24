@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <form :action="contact.formRunUrl" method="post">
+        <form class="formrun" :action="contact.formRun.url" method="post">
             <v-row>
                 <v-col cols="4">
                     <div>Your Full Name</div>
@@ -68,8 +68,6 @@ const { validate } = useForm({ validationSchema: contact.schema })
 const { value: name, errorMessage: nameError } = useField('name')
 const { value: email, errorMessage: emailError } = useField('email')
 const { value: comment, errorMessage: commentError } = useField('comment')
-
-
 
 </script>
 
