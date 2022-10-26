@@ -1,16 +1,12 @@
 <template>
     <div id="breadcrumbs_box">
-        <ul id="breadcrumbs_list" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <li
-                v-for="(item, index) in breadcrumbs"
-                class="breadcrumbs_item"
-                itemscope
-                itemtype="https://schema.org/ListItem"
-            >
-                <a v-if="!item.disabled" itemprop="item" :href="item.href">{{ item.text }}</a>
-                <span v-else itemprop="item">{{ item.text }}</span>
+        <ul id="breadcrumbs_list" vocab="https://schema.org/" typeof="BreadcrumbList">
+            <li v-for="(item, index) in breadcrumbs" class="breadcrumbs_item" property="itemListElement" typeof="ListItem">
+                <a v-if="!item.disabled" property="item" typeof="WebPage" :href="item.href"><span
+                        property="name">{{ item.text }}</span></a>
+                <span v-else property="name">{{ item.text }}</span>
                 <v-icon v-if="!item.disabled" icon="mdi-chevron-right"></v-icon>
-                <meta itemprop="position" :content="index + 1" />
+                <meta property="position" :content="index + 1" />
             </li>
         </ul>
     </div>
@@ -32,14 +28,18 @@ const breadcrumbs: Object = props.breadcrumbs
 #breadcrumbs_box {
     background-color: #edf2f6;
     padding: 20px 0;
+
     ul#breadcrumbs_list {
         padding-left: 0 !important;
         font-size: 12px;
+
         li.breadcrumbs_item {
             display: inline-block;
+
             i {
                 padding: 0 10px;
             }
+
             span {
                 font-weight: bold;
             }

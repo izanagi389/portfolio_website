@@ -99,6 +99,9 @@ export default defineNuxtConfig({
         SUGGEST_API_URL: process.env.SUGGEST_API_URL,
         SEARCH_API_URL: process.env.SEARCH_API_URL,
         TOPIC_API_URL: process.env.TOPIC_API_URL,
-        RELETE_TITLES_API_URL_V2: process.env.RELETE_TITLES_API_URL_V2
+        RELETE_TITLES_API_URL_V2: process.env.RELETE_TITLES_API_URL_V2,
+        MY_EVENTS_API_URL: process.env.MY_EVENTS_API_URL,
+        HOLIDAY_JP_API_FILENAME: process.env.HOLIDAY_JP_API_FILENAME,
+        HOLIDAY_JP_API_URL: process.env.HOLIDAY_JP_API_URL
     },
 });

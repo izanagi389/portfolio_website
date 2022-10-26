@@ -34,7 +34,7 @@ const year = String(today.getFullYear());
 const month = useZeroPadding(today.getMonth() + 1, 2);
 
 const conpassUrl = config.MY_EVENTS_API_URL + year + month;
-const holidayJPUrl = config.HOLIDAY_JP_API_URL + yaer + "/" + config.HOLIDAY_JP_API_FILENAME
+const holidayJPUrl = config.HOLIDAY_JP_API_URL+ "/" + year + "/" + config.HOLIDAY_JP_API_FILENAME
 
 const [{ data: connpass }, { data: holiday }] = await Promise.all([
     useFetch(conpassUrl, {
