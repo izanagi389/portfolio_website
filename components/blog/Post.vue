@@ -5,17 +5,20 @@
                 <BlogUiBreadcrumb :breadcrumbs="breadcrumbs" />
                 <h1>{{ data.title }}</h1>
                 <img :src="data.thumbnail.url" alt="" />
-                <time id="date" :datetime="data.updatedAt">更新日: {{dateFormat}}</time>
-                <article v-for="c in data.blogContent">
+                <time id="date" :datetime="data.updatedAt">更新日: {{ dateFormat }}</time>
+                <BlogUiAdsenseLandscape />
+                <article v-for="(c, index) in data.blogContent">
                     <div v-html="c.content"></div>
                     <div v-html="c.html"></div>
+                    <BlogUiAdsenseArticle v-if="index % 3 === 0" />
                 </article>
+                <BlogUiAdsenseLandscape />
 
                 <client-only placeholder="読み込み中...">
                     <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
                     <ul id="related_title_list">
                         <li class="related_title" v-for="r in related_data"><a :href="'/blog/articles/' + r.id">{{
-                        r.title
+                                r.title
                         }}</a></li>
                     </ul>
                     <h2 id="topic_box_title">■関連トピック</h2>
@@ -65,7 +68,7 @@ const amenomuboko = async () => {
         }
     }).then((response) => {
         related_data.value = response;
-    }).catch((error) =>{
+    }).catch((error) => {
         console.log(error.data)
     })
 
@@ -79,7 +82,7 @@ const amenomuboko = async () => {
         }
     }).then((response) => {
         topic_list.value = response["corpus"].split(",");
-    }).catch((error) =>{
+    }).catch((error) => {
         console.log(error.data)
     });
 

@@ -3,6 +3,7 @@
         <div style="margin: 50px auto 0  auto;">
             <UiSearchForm :placeholder="placeholder" :suggest_num="5" :inputWidth="'70vw'" :word="word" />
         </div>
+        <BlogUiAdsenseLandscape />
         <v-card max-width="900" class="mx-auto" id="search_result_box">
             <v-row dense>
 
@@ -62,7 +63,6 @@ const yomotsuhirasaka = async () => {
     })
 }
 yomotsuhirasaka()
-
 
 </script>
 

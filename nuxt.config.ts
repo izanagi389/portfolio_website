@@ -84,6 +84,9 @@ export default defineNuxtConfig({
                 href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css'
             }
         ],
+        script: [
+            { async: "", src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.ADSENCE_CLIENT_ID}`, crossorigin: 'anonymous' }
+        ]
     },
     privateRuntimeConfig: {
         MICRO_CMS_API_KEY: process.env.MICRO_CMS_API_KEY,
@@ -102,6 +105,7 @@ export default defineNuxtConfig({
         RELETE_TITLES_API_URL_V2: process.env.RELETE_TITLES_API_URL_V2,
         MY_EVENTS_API_URL: process.env.MY_EVENTS_API_URL,
         HOLIDAY_JP_API_FILENAME: process.env.HOLIDAY_JP_API_FILENAME,
-        HOLIDAY_JP_API_URL: process.env.HOLIDAY_JP_API_URL
+        HOLIDAY_JP_API_URL: process.env.HOLIDAY_JP_API_URL,
+        ADSENCE_CLIENT_ID: process.env.ADSENCE_CLIENT_ID
     },
 });

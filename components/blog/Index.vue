@@ -2,6 +2,7 @@
     <v-main id="blog">
         <BlogUiTitleView />
         <v-container>
+            <BlogUiAdsenseLandscape />
             <BlogUiContents :data="data" />
             <BlogUiPagenation :nowPageNum="nowPageNum" :pageMaxNum="pageMaxNum" :visibleNum="visibleNum" :path="path" />
         </v-container>
@@ -81,7 +82,6 @@ useHead({
         { property: 'og:url', hid: 'og:url', content: url },
     ],
 })
-
 
 </script>
 
