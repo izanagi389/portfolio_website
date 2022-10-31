@@ -3,9 +3,11 @@
         <div style="margin: 50px auto 0  auto;">
             <UiSearchForm :placeholder="placeholder" :suggest_num="5" :inputWidth="'70vw'" :word="word" />
         </div>
-        <BlogUiAdsenseLandscape />
         <v-card max-width="900" class="mx-auto" id="search_result_box">
             <v-row dense>
+                <v-col cols="12">
+                    <BlogUiAdsensePortrait />
+                </v-col> 
 
                 <v-col cols="12" v-for="content in searchContents">
                     <a :href="`/blog/articles/${content['contents_id']}`">

@@ -6,13 +6,25 @@
                 <h1>{{ data.title }}</h1>
                 <img :src="data.thumbnail.url" alt="" />
                 <time id="date" :datetime="data.updatedAt">更新日: {{ dateFormat }}</time>
-                <BlogUiAdsenseLandscape />
+                <v-card max-width="900" class="mx-auto" id="search_result_box">
+                    <v-row dense>
+                        <v-col cols="12">
+                            <BlogUiAdsensePortrait />
+                        </v-col>
+                    </v-row>
+                </v-card>
                 <article v-for="(c, index) in data.blogContent">
                     <div v-html="c.content"></div>
                     <div v-html="c.html"></div>
                     <BlogUiAdsenseArticle v-if="index % 3 === 0" />
                 </article>
-                <BlogUiAdsenseLandscape />
+                <v-card max-width="900" class="mx-auto" id="search_result_box">
+                    <v-row dense>
+                        <v-col cols="12">
+                            <BlogUiAdsensePortrait />
+                        </v-col>
+                    </v-row>
+                </v-card>
 
                 <client-only placeholder="読み込み中...">
                     <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>

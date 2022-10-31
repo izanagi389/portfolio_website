@@ -9,4 +9,9 @@ const config = useRuntimeConfig();
 
 const adsenseID = ref(config.ADSENCE_CLIENT_ID);
 
+onMounted(() => {
+    nextTick(() => {
+        (adsbygoogle = window.adsbygoogle || []).push({})
+    })
+})
 </script>

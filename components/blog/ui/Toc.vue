@@ -2,7 +2,7 @@
     <div id="toc_list">
         <h2>目次</h2>
         <BlogUiTocNode :tocList="tocList" />
-        <BlogUiAdsensePortrait />
+        <!-- <BlogUiAdsensePortrait /> -->
     </div>
 </template>
 
