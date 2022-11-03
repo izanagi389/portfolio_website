@@ -6,27 +6,13 @@
                 <h1>{{ data.title }}</h1>
                 <img :src="data.thumbnail.url" alt="" />
                 <time id="date" :datetime="data.updatedAt">更新日: {{ dateFormat }}</time>
-                <v-card max-width="900" class="mx-auto" id="search_result_box">
-                    <v-row dense>
-                        <v-col cols="12">
-                            <BlogUiAdsensePortrait />
-                        </v-col>
-                    </v-row>
-                </v-card>
-                <article v-for="(c, index) in data.blogContent">
+
+                <article v-for="(c, index) in data.blogContent" :key="'blog-article-' + index">
                     <div v-html="c.content"></div>
                     <div v-html="c.html"></div>
-                    <BlogUiAdsenseArticle v-if="index % 3 === 0" />
                 </article>
-                <v-card max-width="900" class="mx-auto" id="search_result_box">
-                    <v-row dense>
-                        <v-col cols="12">
-                            <BlogUiAdsensePortrait />
-                        </v-col>
-                    </v-row>
-                </v-card>
 
-                <client-only placeholder="読み込み中...">
+                <ClientOnly fallback-tag="span">
                     <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
                     <ul id="related_title_list">
                         <li class="related_title" v-for="r in related_data"><a :href="'/blog/articles/' + r.id">{{
@@ -39,7 +25,7 @@
                             {{ topic }}
                         </v-chip>
                     </v-chip-group>
-                </client-only>
+                </ClientOnly>
             </div>
         </v-main>
         <aside id="toc_box">
@@ -99,7 +85,6 @@ const amenomuboko = async () => {
     });
 
 }
-amenomuboko()
 
 
 const title = data.value.title;
@@ -144,6 +129,7 @@ for (const c of data.value.blogContent) {
 
 onMounted(() => {
     Prism.highlightAll();
+    amenomuboko()
 })
 
 </script>

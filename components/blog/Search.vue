@@ -5,10 +5,6 @@
         </div>
         <v-card max-width="900" class="mx-auto" id="search_result_box">
             <v-row dense>
-                <v-col cols="12">
-                    <BlogUiAdsensePortrait />
-                </v-col> 
-
                 <v-col cols="12" v-for="content in searchContents">
                     <a :href="`/blog/articles/${content['contents_id']}`">
                         <v-card height="180" color="#1F7087" theme="dark">
