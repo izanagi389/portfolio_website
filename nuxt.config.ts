@@ -85,7 +85,7 @@ export default defineNuxtConfig({
             }
         ],
         script: [
-            { async: "", src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.ADSENCE_CLIENT_ID}`, crossorigin: 'anonymous' }
+            { async: true, src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.ADSENCE_CLIENT_ID}`, crossorigin: 'anonymous' }
         ]
     },
     privateRuntimeConfig: {
