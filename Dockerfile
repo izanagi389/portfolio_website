@@ -1,8 +1,9 @@
 FROM node:18
 
-WORKDIR /front
-
 RUN apt update -y && apt upgrade -y
+
+WORKDIR /front
+USER node
 
 RUN yarn global add  npm-check-updates
 

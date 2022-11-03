@@ -51,7 +51,7 @@ onMounted(() => {
 <style lang="scss">
 section.section {
   position: fixed;
-  top: 85%;
+  top: 80%;
   right: 10px;
   z-index: 1000;
 }
