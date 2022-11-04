@@ -16,7 +16,7 @@
                                 <div class="flex_box">
                                     <v-card-title class="text-h5 search_contents_title">{{ content["title"] }}
                                     </v-card-title>
-                                    <v-card-text v-if='!!content["excerpt_text"]'>
+                                    <v-card-text v-if='!!content["excerpt_text"].replace(/\s+/g, "")'>
                                         {{ content["excerpt_text"] }}
                                     </v-card-text>
                                     <v-card-text v-else>
@@ -41,26 +41,7 @@ const config = useRuntimeConfig()
 const word = ref(route.query.word)
 const placeholder: string = "キーワードを入力"
 
-const searchContents = ref()
-
-const yomotsuhirasaka = async () => {
-    await $fetch(config.SEARCH_API_URL, {
-        method: "get",
-        mode: "cors",
-        params: {
-            word: word.value
-        },
-        headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache'
-        }
-    }).then((response) => {
-        searchContents.value = response;
-    }).catch((error) =>{
-        console.log(error.data)
-    })
-}
-yomotsuhirasaka()
+const searchContents = await useYomotsuhirasaka(config.SEARCH_API_URL, word.value)
 
 </script>
 

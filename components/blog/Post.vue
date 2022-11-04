@@ -41,58 +41,26 @@ import { hash } from "ohash"
 const route = useRoute()
 const config = useRuntimeConfig()
 
-const { data } = await useFetch("/api/microcms", {
-    params: { id: route.params.post_id },
-    initialCache: false,
-    key: hash(['api-fetch', "/api/microcms", "BlogPost"])
-});
+const related_title_url = config.RELETE_TITLES_API_URL_V2 + route.params.post_id;
+const topic_url = config.TOPIC_API_URL + route.params.post_id;
 
-let date = new Date(data.value.updatedAt);
+const [{ data }, [related_data, topic_list]] = await Promise.all([
+    await useFetch("/api/microcms", {
+        params: { id: route.params.post_id },
+        initialCache: false,
+        key: hash(['api-fetch', "/api/microcms", "BlogPost"])
+    }),
+    await useAmenomuboko(related_title_url, topic_url)
+])
 
-date = date.toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" });
-date=new Date(date);
+
+const date = new Date(data.value.updatedAt);
 
 const year = date.getFullYear();
 const month = date.getMonth() + 1;
 const day = date.getDate();
 
 const dateFormat = year + "年" + month + "月" + day + "日";
-
-
-
-let related_data = ref([]);
-let topic_list = ref([]);
-
-const amenomuboko = async () => {
-    const related_title_url = config.RELETE_TITLES_API_URL_V2 + route.params.post_id;
-    $fetch(related_title_url, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache'
-        }
-    }).then((response) => {
-        related_data.value = response;
-    }).catch((error) => {
-        console.log(error.data)
-    })
-
-    const topic_url = config.TOPIC_API_URL + route.params.post_id;
-    $fetch(topic_url, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache'
-        }
-    }).then((response) => {
-        topic_list.value = response["corpus"].split(",");
-    }).catch((error) => {
-        console.log(error.data)
-    });
-
-}
 
 
 const title = data.value.title;
@@ -118,6 +86,12 @@ const breadcrumbs = [
     },
 ];
 
+let text = "";
+
+for (const c of data.value.blogContent) {
+    text += c.content
+}
+
 useHead({
     title: title,
     meta: [
@@ -129,15 +103,8 @@ useHead({
     ],
 })
 
-let text = "";
-
-for (const c of data.value.blogContent) {
-    text += c.content
-}
-
-onMounted(() => {
+onMounted(async () => {
     Prism.highlightAll();
-    amenomuboko()
 })
 
 </script>

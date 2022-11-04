@@ -34,7 +34,6 @@ const suggestWidth = computed(() => {
     return {
         "--sugest-width": props.suggestWidth
     }
-
 })
 
 </script>
