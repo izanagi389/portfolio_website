@@ -41,26 +41,7 @@ const config = useRuntimeConfig()
 const word = ref(route.query.word)
 const placeholder: string = "キーワードを入力"
 
-const searchContents = ref()
-
-const yomotsuhirasaka = async () => {
-    await $fetch(config.SEARCH_API_URL, {
-        method: "get",
-        mode: "cors",
-        params: {
-            word: word.value
-        },
-        headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache'
-        }
-    }).then((response) => {
-        searchContents.value = response;
-    }).catch((error) =>{
-        console.log(error.data)
-    })
-}
-yomotsuhirasaka()
+const searchContents = await useYomotsuhirasaka(config.SEARCH_API_URL, word.value)
 
 </script>
 

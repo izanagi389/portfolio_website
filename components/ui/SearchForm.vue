@@ -56,13 +56,12 @@ const suggestNum = props.suggestNum;
 const componentShow = ref(true)
 
 const reload = (() => {
-    componentShow.value = false
+    componentShow.value = false;
     nextTick(() => {
-        componentShow.value = true
+        componentShow.value = true;
     })
 
 })
-
 
 
 const word = ref(props.word);
@@ -77,41 +76,25 @@ const element = ref<HTMLDivElement | null>(null) // 対象の要素
 const clickOutside = (e: MouseEvent) => {
     // [対象の要素]が[クリックされた要素]を含まない場合
     if (e.target instanceof Node && !element.value?.contains(e.target)) {
-        suggest_list.value = []
+        suggest_list.value = [];
         reload();
     }
 }
 
-// windowにセットしたイベントはremoveするのを忘れずに
 onMounted(() => {
-    addEventListener('click', clickOutside)
+    addEventListener('click', clickOutside);
 })
 onBeforeUnmount(() => {
-    removeEventListener('click', clickOutside)
+    removeEventListener('click', clickOutside);
 })
-
 
 watch(
     () => word.value,
     async (word) => {
-        if (!!word) {
-            await $fetch(config.SUGGEST_API_URL, {
-                params: {
-                    word: word,
-                    limit: 5
-                },
-            }).then((response) => {
-                suggest_list.value = [];
-                for (const element of response[Symbol.iterator]()) {
-                    if (!!element) { suggest_list.value.push(element["Word"]) }
-                }
-            }).catch((error) => {
-                console.log(error.data)
-            });
-        } else {
-            suggest_list.value = [];
-        }
-        reload()
+        await useSuggest(config.SUGGEST_API_URL, word).then((response) => {
+            suggest_list.value = response;
+        })
+        reload();
     }
 )
 
