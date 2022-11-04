@@ -16,7 +16,7 @@
                                 <div class="flex_box">
                                     <v-card-title class="text-h5 search_contents_title">{{ content["title"] }}
                                     </v-card-title>
-                                    <v-card-text v-if='!!content["excerpt_text"]'>
+                                    <v-card-text v-if='!!content["excerpt_text"].replace(/\s+/g, "")'>
                                         {{ content["excerpt_text"] }}
                                     </v-card-text>
                                     <v-card-text v-else>
