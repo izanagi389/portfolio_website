@@ -47,8 +47,16 @@ const { data } = await useFetch("/api/microcms", {
     key: hash(['api-fetch', "/api/microcms", "BlogPost"])
 });
 
-const date = new Date(data.value.updatedAt);
-const dateFormat = date.getFullYear() + "年" + date.getMonth() + "月" + date.getDay() + "日";
+let date = new Date(data.value.updatedAt);
+
+date = date.toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" });
+date=new Date(date);
+
+const year = date.getFullYear();
+const month = date.getMonth() + 1;
+const day = date.getDate();
+
+const dateFormat = year + "年" + month + "月" + day + "日";
 
 
 
