@@ -17,77 +17,84 @@ export default defineNuxtConfig({
         }
     },
     css: ['vuetify/lib/styles/main.sass', "@/assets/css/default.scss"],
-    meta: {
-        title: "Izanagi's site",
-        htmlAttrs: {
-            lang: "ja"
+    app: {
+        baseURL: "/",
+        buildAssetsDir: "/static/",
+        cdnURL: "",
+        head: {
+            title: "Izanagi's site",
+            htmlAttrs: {
+                lang: "ja"
+            },
+            meta: [
+                {
+                    name: 'viewport',
+                    content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0'
+                },
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Izanagiのポートフォリオサイトです。Nuxt＋Jamstackで構成されたサイトです。'
+                },
+                {
+                    name: 'format-detection',
+                    content: 'telephone=no'
+                },
+                {
+                    hid: 'og:title',
+                    property: 'og:title',
+                    content: 'Izanagi Home Page'
+                },
+                {
+                    hid: 'og:description',
+                    property: 'og:description',
+                    content: 'Izanagiのポートフォリオサイトです。Nuxt＋Jamstackで構成されたサイトです。'
+                },
+                {
+                    hid: 'og:url',
+                    property: 'og:url',
+                    content: process.env.HOMEPAGE_ROOT_URL
+                },
+                {
+                    hid: 'og:image',
+                    property: 'og:image',
+                    content: '/favicon.ico'
+                },
+                {
+                    hid: 'og:type',
+                    property: 'og:type',
+                    content: 'website'
+                },
+                {
+                    hid: 'og:site_name',
+                    property: 'og:site_name',
+                    content: 'Izanagi Home Page'
+                },
+                {
+                    hid: 'twitter:card',
+                    property: 'twitter:card',
+                    content: 'summary'
+                },
+                {
+                    hid: 'twitter:site',
+                    property: 'twitter:site',
+                    content: process.env.TWITTER_MY_USER_ID
+                },
+            ],
+            link: [
+                { rel: 'icon', href: '/favicon.ico' },
+                {
+                    rel: 'stylesheet',
+                    href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css'
+                }
+            ],
+            script: [
+                { async: true, src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.ADSENCE_CLIENT_ID}`, crossorigin: 'anonymous' }
+            ]
         },
-        meta: [
-            {
-                name: 'viewport',
-                content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0'
-            },
-            {
-                hid: 'description',
-                name: 'description',
-                content: 'Izanagiのポートフォリオサイトです。Nuxt＋Jamstackで構成されたサイトです。'
-            },
-            {
-                name: 'format-detection',
-                content: 'telephone=no'
-            },
-            {
-                hid: 'og:title',
-                property: 'og:title',
-                content: 'Izanagi Home Page'
-            },
-            {
-                hid: 'og:description',
-                property: 'og:description',
-                content: 'Izanagiのポートフォリオサイトです。Nuxt＋Jamstackで構成されたサイトです。'
-            },
-            {
-                hid: 'og:url',
-                property: 'og:url',
-                content: process.env.HOMEPAGE_ROOT_URL
-            },
-            {
-                hid: 'og:image',
-                property: 'og:image',
-                content: '/favicon.ico'
-            },
-            {
-                hid: 'og:type',
-                property: 'og:type',
-                content: 'website'
-            },
-            {
-                hid: 'og:site_name',
-                property: 'og:site_name',
-                content: 'Izanagi Home Page'
-            },
-            {
-                hid: 'twitter:card',
-                property: 'twitter:card',
-                content: 'summary'
-            },
-            {
-                hid: 'twitter:site',
-                property: 'twitter:site',
-                content: process.env.TWITTER_MY_USER_ID
-            },
-        ],
-        link: [
-            { rel: 'icon', href: '/favicon.ico' },
-            {
-                rel: 'stylesheet',
-                href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css'
-            }
-        ],
-        script: [
-            { async: true, src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.ADSENCE_CLIENT_ID}`, crossorigin: 'anonymous' }
-        ]
+
     },
+
     privateRuntimeConfig: {
         MICRO_CMS_API_KEY: process.env.MICRO_CMS_API_KEY,
         MICRO_CMS_SERVICE_DOMAIN: process.env.MICRO_CMS_SERVICE_DOMAIN,

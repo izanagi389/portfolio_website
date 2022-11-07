@@ -12,20 +12,26 @@
                     <div v-html="c.html"></div>
                 </article>
 
-                <ClientOnly fallback-tag="span">
-                    <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
-                    <ul id="related_title_list">
-                        <li class="related_title" v-for="r in related_data"><a :href="'/blog/articles/' + r.id">{{
-                                r.title
-                        }}</a></li>
-                    </ul>
-                    <h2 id="topic_box_title">■関連トピック</h2>
-                    <v-chip-group v-model="amenities" column multiple>
-                        <v-chip filter outlined v-for="topic in topic_list" :to="'/blog/search?word=' + topic">
-                            {{ topic }}
-                        </v-chip>
-                    </v-chip-group>
-                </ClientOnly>
+                <div id="amenomuboko_box" v-if="componentShow">
+                    <div id="realted_box">
+                        <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
+                        <ul id="related_title_list" v-if="related_data">
+                            <li class="related_title" v-for="r in related_data"><a :href="'/blog/articles/' + r.id">{{
+                                    r.title
+                            }}</a></li>
+                        </ul>
+                        <span v-else>読み込み中</span>
+                    </div>
+                    <div id="topic_box">
+                        <h2 id="topic_box_title">■関連トピック</h2>
+                        <v-chip-group column v-if="topic_list">
+                            <v-chip v-for="topic in topic_list" :to="'/blog/search?word=' + topic" :value="topic">
+                                {{ topic }}
+                            </v-chip>
+                        </v-chip-group>
+                        <span v-else>読み込み中</span>
+                    </div>
+                </div>
             </div>
         </v-main>
         <aside id="toc_box">
@@ -44,14 +50,11 @@ const config = useRuntimeConfig()
 const related_title_url = config.RELETE_TITLES_API_URL_V2 + route.params.post_id;
 const topic_url = config.TOPIC_API_URL + route.params.post_id;
 
-const [{ data }, [related_data, topic_list]] = await Promise.all([
-    await useFetch("/api/microcms", {
-        params: { id: route.params.post_id },
-        initialCache: false,
-        key: hash(['api-fetch', "/api/microcms", "BlogPost"])
-    }),
-    await useAmenomuboko(related_title_url, topic_url)
-])
+const { data } = await useFetch("/api/microcms", {
+    params: { id: route.params.post_id },
+    initialCache: false,
+    key: hash(['api-fetch', "/api/microcms", "BlogPost"])
+})
 
 
 const date = new Date(data.value.updatedAt);
@@ -103,8 +106,32 @@ useHead({
     ],
 })
 
+const componentShow = ref(true);
+
+const reload = (() => {
+    componentShow.value = false;
+    nextTick(() => {
+        componentShow.value = true;
+    })
+
+})
+
+
+const related_data = ref();
+const topic_list = ref();
+
 onMounted(async () => {
     Prism.highlightAll();
+
+    window.onload = async () => {
+        const array = await useAmenomuboko(related_title_url, topic_url)
+
+        related_data.value = array[0];
+        topic_list.value = array[1];
+        reload()
+    }
+
+
 })
 
 </script>
