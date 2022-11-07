@@ -12,19 +12,25 @@
                     <div v-html="c.html"></div>
                 </article>
 
-                <div id="amenomuboko_box">
-                    <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
-                    <ul id="related_title_list">
-                        <li class="related_title" v-for="r in related_data"><a :href="'/blog/articles/' + r.id">{{
-                                r.title
-                        }}</a></li>
-                    </ul>
-                    <h2 id="topic_box_title">■関連トピック</h2>
-                    <v-chip-group column>
-                        <v-chip v-for="topic in topic_list" :to="'/blog/search?word=' + topic" :value="topic">
-                            {{ topic }}
-                        </v-chip>
-                    </v-chip-group>
+                <div id="amenomuboko_box" v-if="componentShow">
+                    <div id="realted_box">
+                        <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
+                        <ul id="related_title_list" v-if="related_data">
+                            <li class="related_title" v-for="r in related_data"><a :href="'/blog/articles/' + r.id">{{
+                                    r.title
+                            }}</a></li>
+                        </ul>
+                        <span v-else>読み込み中</span>
+                    </div>
+                    <div id="topic_box">
+                        <h2 id="topic_box_title">■関連トピック</h2>
+                        <v-chip-group column v-if="topic_list">
+                            <v-chip v-for="topic in topic_list" :to="'/blog/search?word=' + topic" :value="topic">
+                                {{ topic }}
+                            </v-chip>
+                        </v-chip-group>
+                        <span v-else>読み込み中</span>
+                    </div>
                 </div>
             </div>
         </v-main>
@@ -100,14 +106,32 @@ useHead({
     ],
 })
 
-const array = ref();
-array.value = await useAmenomuboko(related_title_url, topic_url);
+const componentShow = ref(true);
 
-const related_data = ref(array.value[0]);
-const topic_list = ref(array.value[1]);
+const reload = (() => {
+    componentShow.value = false;
+    nextTick(() => {
+        componentShow.value = true;
+    })
+
+})
+
+
+const related_data = ref();
+const topic_list = ref();
 
 onMounted(async () => {
-    Prism.highlightAll();    
+    Prism.highlightAll();
+
+    window.onload = async () => {
+        const array = await useAmenomuboko(related_title_url, topic_url)
+
+        related_data.value = array[0];
+        topic_list.value = array[1];
+        reload()
+    }
+
+
 })
 
 </script>
