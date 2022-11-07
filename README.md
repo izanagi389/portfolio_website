@@ -1,13 +1,15 @@
-# Nuxt 3 Minimal Starter
-
-We recommend to look at the [documentation](https://v3.nuxtjs.org).
+# About
+### ポートフォリオサイト（Nuxt3）
+ポートフォリオサイトのコードになります。
+基本SSG（npx nuxi generate）に対応できるような作りにしているつもりです。
+https://izanagi-portfolio-site.com/
 
 ## Setup
 
 Make sure to install the dependencies
 
 ```bash
-yarn install
+yarn
 ```
 
 ## Development
@@ -20,10 +22,8 @@ yarn dev
 
 ## Production
 
-Build the application for production:
-
 ```bash
-yarn build
+yarn generate
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
