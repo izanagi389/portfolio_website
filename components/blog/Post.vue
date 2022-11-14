@@ -20,7 +20,9 @@
                                     r.title
                             }}</a></li>
                         </ul>
-                        <span v-else>読み込み中</span>
+                        <div v-else class="text-center">
+                            <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                        </div>
                     </div>
                     <div id="topic_box">
                         <h2 id="topic_box_title">■関連トピック</h2>
@@ -29,7 +31,9 @@
                                 {{ topic }}
                             </v-chip>
                         </v-chip-group>
-                        <span v-else>読み込み中</span>
+                        <div v-else class="text-center">
+                            <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                        </div>
                     </div>
                 </div>
             </div>
