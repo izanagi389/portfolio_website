@@ -16,7 +16,7 @@
                     <div id="realted_box">
                         <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
                         <ul id="related_title_list" v-if="related_data">
-                            <li class="related_title" v-for="r in related_data"><a :href="'/blog/articles/' + r.id">{{
+                            <li class="related_title" v-for="r in related_data"><a :href="`/blog/articles/${r.id}/`">{{
                                     r.title
                             }}</a></li>
                         </ul>

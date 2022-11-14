@@ -4,7 +4,7 @@
             <template v-for="tag in props.tagList">
                 <v-chip
                     nuxt
-                    :to="'/blog/tags/' + tag + '/1'"
+                    :to="'/blog/tags/' + tag + '/1/'"
                     :key="tag"
                     v-if="!(tag.length == 0)"
                 >{{ tag }}</v-chip>
