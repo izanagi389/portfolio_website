@@ -4,13 +4,28 @@
         <v-row justify="space-around">
             <v-col v-for="card in cards" :key="card.title" :cols="card.flex" style="max-width: 400px">
                 <v-card>
-                    <a :href="card.href">
+                    <a :href="card.href" v-if="!card.maintenance">
                         <v-img :src="card.src" class="white--text align-end img_wrap menu_link_style"
                             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" :height="card.height"
                             :width="card.width" cover>
                             <v-card-title class="text-white" v-text="card.title"></v-card-title>
                         </v-img>
                     </a>
+                    <a @click="snackbar = true" v-else>
+                        <v-img :src="card.src" class="white--text align-end img_wrap menu_link_style"
+                            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" :height="card.height"
+                            :width="card.width" cover>
+                            <v-card-title class="text-white" v-text="card.title"></v-card-title>
+                        </v-img>
+                    </a>
+                    <v-snackbar v-model="snackbar">
+                        {{ maintenanceText }}
+                        <template v-slot:actions>
+                            <v-btn color="pink" variant="text" @click="snackbar = false">
+                                Close
+                            </v-btn>
+                        </template>
+                    </v-snackbar>
                 </v-card>
             </v-col>
         </v-row>
@@ -25,9 +40,12 @@ type CardDataType = {
     height: number;
     width: number;
     href: string;
+    maintenance: boolean;
 }
 
 const title: String = "Contents";
+const snackbar = ref(false);
+const maintenanceText: String = "メンテナンス中です";
 
 const cards: Array<CardDataType> = [
     {
@@ -36,18 +54,20 @@ const cards: Array<CardDataType> = [
         flex: 4,
         height: 250,
         width: 400,
-        href: "/blog/pages/1/"
+        href: "/blog/pages/1/",
+        maintenance: false,
     },
     {
-        title: 'Japanese MIddle Name\n（リニューアル対応中につき停止中）',
+        title: 'Japanese MIddle Name',
         src: '/images/product/japaneseMidleName.webp',
         flex: 4,
         height: 250,
         width: 400,
-        // href: "/app/middle_name/"
-        href: "#"
+        href: "/app/middle_name/",
+        maintenance: true,
     },
 ]
+
 
 </script>
 
