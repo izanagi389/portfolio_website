@@ -4,7 +4,7 @@
             <div id="content_box">
                 <BlogUiBreadcrumb :breadcrumbs="breadcrumbs" />
                 <h1>{{ data.title }}</h1>
-                <img :src="data.thumbnail.url" alt="" />
+                <img :src="`${data.thumbnail.url}?fit=crop&w=640&fm=webp`" alt="" />
                 <time id="date" :datetime="data.updatedAt">更新日: {{ dateFormat }}</time>
 
                 <article v-for="(c, index) in data.blogContent" :key="'blog-article-' + index">
@@ -16,11 +16,13 @@
                     <div id="realted_box">
                         <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
                         <ul id="related_title_list" v-if="related_data">
-                            <li class="related_title" v-for="r in related_data"><a :href="'/blog/articles/' + r.id">{{
+                            <li class="related_title" v-for="r in related_data"><a :href="`/blog/articles/${r.id}/`">{{
                                     r.title
                             }}</a></li>
                         </ul>
-                        <span v-else>読み込み中</span>
+                        <div v-else class="text-center">
+                            <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                        </div>
                     </div>
                     <div id="topic_box">
                         <h2 id="topic_box_title">■関連トピック</h2>
@@ -29,7 +31,9 @@
                                 {{ topic }}
                             </v-chip>
                         </v-chip-group>
-                        <span v-else>読み込み中</span>
+                        <div v-else class="text-center">
+                            <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                        </div>
                     </div>
                 </div>
             </div>

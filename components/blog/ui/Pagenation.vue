@@ -11,11 +11,11 @@
                     v-if="index < visibleNum || (index > visibleNum && (num === pageMaxNum))"
                     class="pagenation"
                 >
-                    <a :href="`${path}${num}`">{{ num }}</a>
+                    <a :href="`${path}${num}/`">{{ num }}</a>
                 </li>
                 <li v-else-if="index === visibleNum && (num !== pageMaxNum)">...</li>
                 <li v-else class="pagenation">
-                    <a :href="`${path}${num}`">{{ num }}</a>
+                    <a :href="`${path}${num}/`">{{ num }}</a>
                 </li>
             </template>
             <li id="pagenation_next">
@@ -58,8 +58,8 @@ if (nowPageNum + 1 <= pageMaxNum || pageMaxNum < visibleNum) {
     pager = [...Array(pageMaxNum)].map((_, i) => i + pageOffset - 1).filter(element => !(element > pageMaxNum));
 }
 
-let prevLink = `${path}${nowPageNum - 1}`;
-let nextLink = `${path}${nowPageNum + 1}`;
+let prevLink = `${path}${nowPageNum - 1}/`;
+let nextLink = `${path}${nowPageNum + 1}/`;
 
 
 </script>

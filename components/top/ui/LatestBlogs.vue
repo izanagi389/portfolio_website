@@ -5,7 +5,7 @@
             <li v-for="c in contents">
                 <v-tooltip location="top">
                     <template v-slot:activator="{ props }">
-                        <a :href="`/blog/articles/${c.id}`" v-bind="props">{{ c.title }}</a>
+                        <a :href="`/blog/articles/${c.id}/`" v-bind="props">{{ c.title }}</a>
                     </template>
                     <span>{{ c.title }}</span>
                 </v-tooltip>

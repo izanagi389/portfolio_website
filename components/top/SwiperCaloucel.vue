@@ -4,7 +4,7 @@
         <swiper :modules="modules" :slides-per-view="swiper.views"
             :autoplay="{ disableOnInteraction: swiper.autoPlay, }">
             <swiper-slide v-for="content in data['contents']" :key="content.id">
-                <a :href="`/blog/articles/${content.id}`">
+                <a :href="`/blog/articles/${content.id}/`">
                     <picture>
                         <source :srcset="`${content.thumbnail.url}?fm=webp&h=${swiper.imageWidth}`" />
                         <img :src="`${content.thumbnail.url}?h=${swiper.imageWidth}`" />

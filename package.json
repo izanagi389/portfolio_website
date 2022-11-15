@@ -16,13 +16,13 @@
     "lottie-web": "^5.9.6",
     "moment": "^2.29.4",
     "prismjs": "^1.29.0",
-    "sass": "^1.56.0",
-    "sass-loader": "^13.1.0",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
     "sitemap": "^7.1.1",
     "swiper": "^8.4.4",
     "three": "^0.146.0",
-    "vee-validate": "^4.7.2",
-    "vuetify": "3.0.0",
+    "vee-validate": "^4.7.3",
+    "vuetify": "3.0.1",
     "yup": "^0.32.11"
   }
 }
