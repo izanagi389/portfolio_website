@@ -4,7 +4,7 @@
             <div id="content_box">
                 <BlogUiBreadcrumb :breadcrumbs="breadcrumbs" />
                 <h1>{{ data.title }}</h1>
-                <img :src="data.thumbnail.url" alt="" />
+                <img :src="`${data.thumbnail.url}?fit=crop&w=640&fm=webp`" alt="" />
                 <time id="date" :datetime="data.updatedAt">更新日: {{ dateFormat }}</time>
 
                 <article v-for="(c, index) in data.blogContent" :key="'blog-article-' + index">
