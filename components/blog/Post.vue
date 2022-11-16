@@ -56,7 +56,6 @@ const topic_url = config.TOPIC_API_URL + route.params.post_id;
 
 const { data } = await useFetch("/api/microcms", {
     params: { id: route.params.post_id },
-    initialCache: false,
     key: hash(['api-fetch', "/api/microcms", "BlogPost"])
 })
 

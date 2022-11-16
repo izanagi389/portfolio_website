@@ -72,7 +72,6 @@ const { data } = await useFetch("/api/microcms", {
     params: {
         limit: 1000,
     },
-    initialCache: false,
     key: hash(['api-fetch', "/api/microcms", "Information"])
 });
 

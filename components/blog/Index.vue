@@ -62,7 +62,6 @@ let { data } = await useFetch("/api/microcms", {
         filterKeyName: filterKeyName,
         filter: filter
     },
-    initialCache: false,
     key: hash(['api-fetch', "/api/microcms", "Blog"])
 });
 

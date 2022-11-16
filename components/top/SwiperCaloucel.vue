@@ -36,7 +36,6 @@ export default {
             autoPlay: false
         })
         const { data } = useFetch("/api/microcms", {
-            initialCache: false,
             key: hash(['api-fetch', "/api/microcms", "Swiper"])
         })
 
