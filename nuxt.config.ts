@@ -95,24 +95,25 @@ export default defineNuxtConfig({
 
     },
 
-    privateRuntimeConfig: {
+    runtimeConfig: {
         MICRO_CMS_API_KEY: process.env.MICRO_CMS_API_KEY,
         MICRO_CMS_SERVICE_DOMAIN: process.env.MICRO_CMS_SERVICE_DOMAIN,
-    },
-    publicRuntimeConfig: {
-        FORM_RUN_URL: process.env.FORM_RUN_URL,
-        TWITTER_MY_USER_ID: process.env.TWITTER_MY_USER_ID,
-        HOMEPAGE_ROOT_URL: process.env.HOMEPAGE_ROOT_URL,
-        CONNPASS_NICKNAME: process.env.CONNPASS_NICKNAME,
-        GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
-        RELETE_TITLES_API_URL: process.env.RELETE_TITLES_API_URL,
-        SUGGEST_API_URL: process.env.SUGGEST_API_URL,
-        SEARCH_API_URL: process.env.SEARCH_API_URL,
-        TOPIC_API_URL: process.env.TOPIC_API_URL,
-        RELETE_TITLES_API_URL_V2: process.env.RELETE_TITLES_API_URL_V2,
-        MY_EVENTS_API_URL: process.env.MY_EVENTS_API_URL,
-        HOLIDAY_JP_API_FILENAME: process.env.HOLIDAY_JP_API_FILENAME,
-        HOLIDAY_JP_API_URL: process.env.HOLIDAY_JP_API_URL,
-        ADSENCE_CLIENT_ID: process.env.ADSENCE_CLIENT_ID
+        public: {
+            FORM_RUN_URL: process.env.FORM_RUN_URL,
+            TWITTER_MY_USER_ID: process.env.TWITTER_MY_USER_ID,
+            HOMEPAGE_ROOT_URL: process.env.HOMEPAGE_ROOT_URL,
+            CONNPASS_NICKNAME: process.env.CONNPASS_NICKNAME,
+            GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+            RELETE_TITLES_API_URL: process.env.RELETE_TITLES_API_URL,
+            SUGGEST_API_URL: process.env.SUGGEST_API_URL,
+            SEARCH_API_URL: process.env.SEARCH_API_URL,
+            TOPIC_API_URL: process.env.TOPIC_API_URL,
+            RELETE_TITLES_API_URL_V2: process.env.RELETE_TITLES_API_URL_V2,
+            MY_EVENTS_API_URL: process.env.MY_EVENTS_API_URL,
+            HOLIDAY_JP_API_FILENAME: process.env.HOLIDAY_JP_API_FILENAME,
+            HOLIDAY_JP_API_URL: process.env.HOLIDAY_JP_API_URL,
+            ADSENCE_CLIENT_ID: process.env.ADSENCE_CLIENT_ID
+        }
+
     },
 });
