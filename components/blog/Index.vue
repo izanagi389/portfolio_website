@@ -22,7 +22,7 @@ let offset: number = (nowPageNum - 1) * limit;
 const categoryPath = route.params.category;
 const tag = route.params.tag;
 
-let filter;
+let filter: string | string[];
 let filterKeyName: string;
 let path: string;
 let title: string;
@@ -49,27 +49,28 @@ if (categoryPath == "it") {
     title = `「${tag}」 - Develop blog - ${nowPageNum}ページ目`
 } else {
     path = "/blog/pages/"
+    filterKeyName = "";
     filter = "";
     title = `Develop blog - ${nowPageNum}ページ目`
 }
 
 
 
-let { data } = await useFetch("/api/microcms", {
+let { data }: any = await useFetch("/api/microcms", {
     params: {
         offset: offset !== 0 ? offset : "",
         limit: limit,
         filterKeyName: filterKeyName,
         filter: filter
     },
-    key: hash(['api-fetch', "/api/microcms", "Blog"])
+    key: hash(['api-fetch', "/api/microcms", "Blog"]),
 });
 
 
-const pageMaxNum: number = Math.ceil(data.value["totalCount"] / limit)
+let pageMaxNum: number = Math.ceil(data.value["totalCount"] / limit);
 
-const description = "ブログ一覧ページになります。"
-const url = config.HOMEPAGE_ROOT_URL + route.fullPath;
+const description: string = "ブログ一覧ページになります。"
+const url: string = config.HOMEPAGE_ROOT_URL + route.fullPath;
 
 useHead({
     title: title,

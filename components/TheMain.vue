@@ -1,8 +1,7 @@
 <template>
     <v-main>
         <TopTitleView />
-        <v-container fluid>
-            
+        <v-container fluid>  
             <TopContentLinks />
             <TopSwiperCaloucel />
             <TopSkils />

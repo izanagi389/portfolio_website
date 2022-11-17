@@ -23,7 +23,7 @@ const props = defineProps({
     }
 })
 
-const contents = props.contents
+const contents: object = props.contents
 const title: String = "最新記事"
 
 

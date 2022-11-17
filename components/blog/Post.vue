@@ -84,7 +84,7 @@ const breadcrumbs = [
     {
         text: '記事一覧',
         disabled: false,
-        href: '/blog/pages/1',
+        href: '/blog/pages/1/',
     },
     {
         text: title,

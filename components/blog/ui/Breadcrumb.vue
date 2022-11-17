@@ -1,9 +1,11 @@
 <template>
     <div id="breadcrumbs_box">
         <ul id="breadcrumbs_list" vocab="https://schema.org/" typeof="BreadcrumbList">
-            <li v-for="(item, index) in breadcrumbs" class="breadcrumbs_item" property="itemListElement" typeof="ListItem">
-                <a v-if="!item.disabled" property="item" typeof="WebPage" :href="item.href"><span
-                        property="name">{{ item.text }}</span></a>
+            <li v-for="(item, index) in breadcrumbs" class="breadcrumbs_item" property="itemListElement"
+                typeof="ListItem">
+                <a v-if="!item.disabled" property="item" typeof="WebPage" :href="item.href"><span property="name">{{
+                        item.text
+                }}</span></a>
                 <span v-else property="name">{{ item.text }}</span>
                 <v-icon v-if="!item.disabled" icon="mdi-chevron-right"></v-icon>
                 <meta property="position" :content="index + 1" />
@@ -16,10 +18,13 @@
 <script setup lang="ts">
 
 const props = defineProps({
-    breadcrumbs: Object
+    breadcrumbs: {
+        type: Object,
+        required: true
+    }
 })
 
-const breadcrumbs: Object = props.breadcrumbs
+const breadcrumbs: object = props.breadcrumbs
 
 
 </script>
