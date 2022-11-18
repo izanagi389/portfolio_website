@@ -38,11 +38,9 @@ const holidayJPUrl = config.HOLIDAY_JP_API_URL+ "/" + year + "/" + config.HOLIDA
 
 const [{ data: connpass }, { data: holiday }] = await Promise.all([
     useFetch(conpassUrl, {
-        initialCache: false,
         key: hash(['api-fetch', "/api/connpass", "Connpass"]),
     }),
     useFetch(holidayJPUrl, {
-        initialCache: false,
         key: hash(['api-fetch', "/api/holidays", "Holidays"])
     }),
 ])

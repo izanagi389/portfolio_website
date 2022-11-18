@@ -33,15 +33,15 @@
 </template>
 
 
-<script lang="ts" setup>
+<script setup lang="ts">
 
-const route = useRoute()
-const config = useRuntimeConfig()
+const route: any = useRoute()
+const config: any = useRuntimeConfig()
 
-const word = ref(route.query.word)
+const word: any = ref(route.query.word)
 const placeholder: string = "キーワードを入力"
 
-const searchContents = await useYomotsuhirasaka(config.SEARCH_API_URL, word.value)
+const searchContents: any = await useYomotsuhirasaka(config.SEARCH_API_URL, word.value)
 
 </script>
 
@@ -111,6 +111,7 @@ const searchContents = await useYomotsuhirasaka(config.SEARCH_API_URL, word.valu
     .search_contents_image {
         display: none;
     }
+
     .search_contents_title {
         width: 100% !important;
     }

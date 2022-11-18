@@ -28,7 +28,8 @@
             </v-col>
             <v-col>
                 <v-card class="mx-auto text-center" max-width="250" height="500">
-                    <UiSearchForm :placeholder="information.search.placeholder" :suggest-num="information.search.suggest.num" :input-width="'170px'" />
+                    <UiSearchForm :placeholder="information.search.placeholder"
+                        :suggest-num="information.search.suggest.num" :input-width="'170px'" />
                     <TopUiTags :tag-list="tagList" />
                 </v-card>
             </v-col>
@@ -68,15 +69,14 @@ const onClickLink = () => {
 };
 
 
-const { data } = await useFetch("/api/microcms", {
+const { data }: any = await useFetch("/api/microcms", {
     params: {
         limit: 1000,
     },
-    initialCache: false,
     key: hash(['api-fetch', "/api/microcms", "Information"])
 });
 
-data.value["contents"].forEach((element) => information.search.suggest.tags += element.tags)
+data.value["contents"].forEach((element: any) => information.search.suggest.tags += element.tags)
 const tagList = Array.from(new Set(information.search.suggest.tags.split(","))).join(",").split(",");
 
 const blogContents = data.value["contents"].slice(0, information.latestBlogContentNum)
@@ -97,5 +97,4 @@ h2 {
 .v-overlay__content {
     max-width: 500px;
 }
-
 </style>

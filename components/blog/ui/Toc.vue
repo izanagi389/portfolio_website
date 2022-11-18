@@ -6,20 +6,23 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
-    blogContent: String
+    blogContent: {
+        type: String,
+        required: true
+    }
 });
 
 let tag_val = "h.";
 
-const pattern = new RegExp("<" + tag_val + "(?: .+?)?>.*?<\/" + tag_val + ">", "g");
+const pattern: RegExp = new RegExp("<" + tag_val + "(?: .+?)?>.*?<\/" + tag_val + ">", "g");
 const blogContent = props.blogContent.match(pattern)
 
 
-let tocList = [];
+let tocList: any[] = [];
 
-onBeforeMount(async() => {
+onBeforeMount(async () => {
     if (!!blogContent) {
 
         let h2Flag = 0;
@@ -32,8 +35,15 @@ onBeforeMount(async() => {
                 name: "",
                 children: [],
             };
-            item.name = t.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
-            item.id = t.match(/\"(.+)\"/)[1]
+            item.name = t.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
+
+            const id = t.match(/\"(.+)\"/);
+            if (id) {
+                item.id = id[1];
+            } else {
+                item.id = "";
+            }
+            
 
             if (t.includes("h2")) {
                 h2Flag++;

@@ -8,13 +8,16 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 const props = defineProps({
-    tocList: Object
+    tocList: {
+        type: Object,
+        required: true
+    }
 });
 
-const tl = props.tocList;
+const tl: any = props.tocList;
 
 </script>
 

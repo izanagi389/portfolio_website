@@ -22,17 +22,18 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 const props = defineProps({
-    data: Object
+    data: {
+        type: Object,
+        required: true
+    }
 })
 
-const data = props.data
+const data: object = props.data
 
 const config = useRuntimeConfig();
-
-const adsenseID = ref(config.ADSENCE_CLIENT_ID);
 
 onMounted(() => {
     nextTick(() => {

@@ -9,13 +9,13 @@
     </div>
 </template>
 
-<script setup lamg="ts">
+<script setup lang="ts">
 import animationData from "@/assets/json/78255-background-looping-animation.json";
 import lottie from 'lottie-web';
 
-const title = "Blog";
+const title: string = "Blog";
 
-const lottie_ref = ref()
+const lottie_ref: any = ref()
 
 onMounted(() => {
     lottie.loadAnimation({

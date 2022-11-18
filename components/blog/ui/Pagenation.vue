@@ -7,10 +7,7 @@
                 </a>
             </li>
             <template v-for="(num, index) in pager ">
-                <li
-                    v-if="index < visibleNum || (index > visibleNum && (num === pageMaxNum))"
-                    class="pagenation"
-                >
+                <li v-if="index < visibleNum || (index > visibleNum && (num === pageMaxNum))" class="pagenation">
                     <a :href="`${path}${num}/`">{{ num }}</a>
                 </li>
                 <li v-else-if="index === visibleNum && (num !== pageMaxNum)">...</li>
@@ -30,12 +27,22 @@
 <script setup lang="ts">
 
 const props = defineProps({
-    nowPageNum: Number,
-    pageMaxNum: Number,
-    visibleNum: Number,
-    path: String,
-    query: String,
-    queryString: String
+    nowPageNum: {
+        type: Number,
+        required: true
+    },
+    pageMaxNum: {
+        type: Number,
+        required: true
+    },
+    visibleNum: {
+        type: Number,
+        required: true
+    },
+    path: {
+        type: String,
+        required: true
+    },
 })
 
 
@@ -50,7 +57,7 @@ const nextButtonShow = nowPageNum < pageMaxNum ? true : false;
 
 const pageOffset: number = nowPageNum - 2 > 0 ? nowPageNum - 2 : 1
 
-let pager;
+let pager: number[];
 
 if (nowPageNum + 1 <= pageMaxNum || pageMaxNum < visibleNum) {
     pager = [...Array(pageMaxNum)].map((_, i) => i + pageOffset).filter(element => !(element > pageMaxNum));
@@ -68,10 +75,12 @@ let nextLink = `${path}${nowPageNum + 1}/`;
 #pagenation_box {
     text-align: center;
     margin: 50px;
+
     ul#pagenation_list {
         li {
             display: inline-block;
         }
+
         li.pagenation {
             border-radius: 30%;
             box-shadow: 0 0 2px grey;
@@ -80,10 +89,12 @@ let nextLink = `${path}${nowPageNum + 1}/`;
             margin: 0 15px;
             text-align: center;
             width: 30px;
+
             a.router-link-active {
                 font-weight: bold;
             }
         }
+
         @media screen and (max-width: 640px) {
             li.pagenation {
                 margin: 5px !important;
