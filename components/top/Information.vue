@@ -90,7 +90,7 @@ const blogContents = data.value["contents"].slice(0, information.latestBlogConte
 }
 
 h2 {
-    margin-bottom: 10vw;
+    margin-bottom: 100px;
     font-family: Great Vibes !important;
 }
 

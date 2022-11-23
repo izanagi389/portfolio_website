@@ -6,21 +6,21 @@
         <v-card max-width="900" class="mx-auto" id="search_result_box">
             <v-row dense>
                 <v-col cols="12" v-for="content in searchContents">
-                    <a :href="`/blog/articles/${content['contents_id']}/`">
+                    <a :href="`/blog/articles/${content.contents_id}/`">
                         <v-card height="180" color="#1F7087" theme="dark">
                             <div class="d-sm-flex flex-no-wrap">
                                 <div class="pa-3 search_contents_image">
-                                    <img :src="content['img_url']" :height="150" :width="200"
+                                    <img :src="`${content.img_url}?fm=webp`" :height="150" :width="200"
                                         style="max-width: none;object-fit: fill;" />
                                 </div>
                                 <div class="flex_box">
-                                    <v-card-title class="text-h5 search_contents_title">{{ content["title"] }}
+                                    <v-card-title class="text-h5 search_contents_title">{{ content.title }}
                                     </v-card-title>
-                                    <v-card-text v-if='!!content["excerpt_text"].replace(/\s+/g, "")'>
-                                        {{ content["excerpt_text"] }}
+                                    <v-card-text v-if='!!content.excerpt_text.replace(/\s+/g, "")'>
+                                        {{ content.excerpt_text }}
                                     </v-card-text>
                                     <v-card-text v-else>
-                                        {{ content["body"].substr(0, 100) + "..." }}
+                                        {{ content.body.substr(0, 100) + "..." }}
                                     </v-card-text>
                                 </div>
                             </div>
