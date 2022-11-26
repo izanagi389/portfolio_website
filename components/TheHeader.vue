@@ -19,8 +19,6 @@
         <div id="menu_search_box" :class="{ 'active': isActive }">
             <UiSearchForm :placeholder="placeholder" :suggest-num="5" input-width="85vw" />
             <button class="mdi mdi-close" @click="isActive = false" aria-label="Serach box Close"></button>
-            <!-- generateのクロール用リンク -->
-            <a href="/blog/search" style="display: none"></a>
         </div>
     </header>
 </template>
