@@ -213,4 +213,8 @@ onMounted(async () => {
         }
     }
 }
+
+#amenomuboko_box {
+    margin-bottom: 100px;
+}
 </style>
