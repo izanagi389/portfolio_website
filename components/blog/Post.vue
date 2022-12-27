@@ -181,6 +181,10 @@ onMounted(async () => {
                 padding-left: 20px;
             }
 
+            ol {
+                padding-left: 20px;
+            }
+
             h3,
             h4 {
                 margin: 30px 0;
