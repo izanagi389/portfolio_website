@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync, copyFile } from 'fs'
+import { mkdirSync, writeFileSync, readFileSync, copyFile } from 'fs'
 import { Readable } from 'stream'
 import { dirname } from 'path'
 import { SitemapStream, streamToPromise } from 'sitemap'
@@ -46,7 +46,8 @@ export default defineNuxtModule({
 
         nuxt.hook('nitro:build:before', (nitro) => {
             const paths = []
-            const EXCLUDED_KEYWORDS = ['/api/_content', '_payload.js', '200.html']
+
+            const EXCLUDED_KEYWORDS = ['_payload.js', '200.html', '404.html', "privacy-policy", "privacy-policy/", "contact/", "contact", "search", "search/"]
             nitro.hooks.hook('prerender:route', (route) => {
                 const shouldBeAddedToSitemap = EXCLUDED_KEYWORDS.every(
                     (excludedKeyword) => !route.route.includes(excludedKeyword)
