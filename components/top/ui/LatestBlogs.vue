@@ -2,13 +2,8 @@
     <div id="latestBlog">
         <h2>{{ title }}</h2>
         <ol>
-            <li v-for="c in contents">
-                <v-tooltip location="top">
-                    <template v-slot:activator="{ props }">
-                        <a :href="`/blog/articles/${c.id}/`" v-bind="props">{{ c.title }}</a>
-                    </template>
-                    <span>{{ c.title }}</span>
-                </v-tooltip>
+            <li v-for="c in contents" :key="`latest-title-${c.id}`">
+                <a :href="`/blog/articles/${c.id}/`" v-bind="props"><span>{{ c.title }}</span></a>
             </li>
         </ol>
     </div>
@@ -58,12 +53,9 @@ const title: String = "最新記事"
             }
 
             a {
-                display: block;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                color: inherit;
-
+                display: inline-block;
+                width: 100%;
+                color: black;
 
                 &:before {
                     position: absolute;
@@ -86,10 +78,25 @@ const title: String = "最新記事"
                 }
 
                 &:visited,
-                &:hover,
                 &:active {
                     color: inherit;
                 }
+
+                // https://www.nxworld.net/15-text-link-hover-effect-and-design.html#%E6%96%87%E5%AD%97%E3%81%8C%E7%B8%A6%E5%9B%9E%E8%BB%A2
+                span {
+                    display: block;
+                    transition: .5s;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                &:hover span {
+                    -webkit-transform: rotateX(360deg);
+                    transform: rotateX(360deg);
+                    font-weight: bold;
+                }
+
             }
 
 
