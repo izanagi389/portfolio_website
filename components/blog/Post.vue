@@ -181,7 +181,7 @@ onMounted(async () => {
                 padding-left: 20px;
             }
 
-            ol {
+            ol, ul {
                 padding-left: 20px;
             }
 
