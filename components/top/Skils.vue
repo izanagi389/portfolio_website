@@ -74,7 +74,7 @@ const skils: Array<skilsDataType> = [
 }
 
 h2 {
-    margin-bottom: 20vw;
+    margin-bottom: 100px;
     font-family: Great Vibes !important;
 }
 </style>

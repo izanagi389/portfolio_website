@@ -64,7 +64,7 @@ const cards: Array<CardDataType> = [
         height: 250,
         width: 400,
         href: "/app/middle_name/",
-        maintenance: true,
+        maintenance: false,
     },
 ]
 
@@ -73,7 +73,7 @@ const cards: Array<CardDataType> = [
 
 <style lang="scss" scoped>
 h2 {
-    margin-bottom: 10vw;
+    margin: 100px 0;
     font-family: Great Vibes !important;
 }
 

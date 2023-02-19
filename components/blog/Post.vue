@@ -16,9 +16,9 @@
                     <div id="realted_box">
                         <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
                         <ul id="related_title_list" v-if="related_data">
-                            <li class="related_title" v-for="r in related_data"><a :href="`/blog/articles/${r.id}/`">{{
-                                    r.title
-                            }}</a></li>
+                            <li class="related_title" v-for="r in related_data">
+                                <a :href="`/blog/articles/${r.id}/`">{{ r.title }}</a>
+                            </li>
                         </ul>
                         <div v-else class="text-center">
                             <v-progress-circular indeterminate color="primary"></v-progress-circular>
@@ -125,16 +125,14 @@ const topic_list = ref();
 
 onMounted(async () => {
     Prism.highlightAll();
-
     window.onload = async () => {
+
         const array = await useAmenomuboko(related_title_url, topic_url)
 
         related_data.value = array[0];
         topic_list.value = array[1];
         reload()
     }
-
-
 })
 
 </script>
@@ -181,6 +179,11 @@ onMounted(async () => {
                 padding-left: 20px;
             }
 
+            ol,
+            ul {
+                padding-left: 20px;
+            }
+
             h3,
             h4 {
                 margin: 30px 0;
@@ -212,5 +215,9 @@ onMounted(async () => {
             display: none;
         }
     }
+}
+
+#amenomuboko_box {
+    margin-bottom: 100px;
 }
 </style>

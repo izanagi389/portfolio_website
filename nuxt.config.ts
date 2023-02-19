@@ -116,4 +116,19 @@ export default defineNuxtConfig({
         }
 
     },
+    // SSG,ISG以外の時に利用
+    // routeRules: {
+    //     // リダイレクト
+    //     '/blog': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
+    //     '/blog/': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
+    //     '/blog/pages': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
+    //     '/blog/pages/': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
+
+    //     // 静的ページ
+    //     '/blog/articles/**': { static: true },
+    //     '/blog/tags/**': { static: true },
+
+    //     // swr 
+    //     '/blog/pages/**': { swr: true },
+    // }
 });
