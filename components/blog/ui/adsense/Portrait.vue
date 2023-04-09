@@ -13,6 +13,17 @@ const config = useRuntimeConfig();
 
 const adsenseID = ref(config.ADSENCE_CLIENT_ID);
 
+onMounted(() => {
+  nextTick(() => {
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  })
+}) 
 </script>
+
+
 <style scoped>
+/* ➍ 広告未配信なら広告セクションを非表示にする */
+ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}
 </style>
