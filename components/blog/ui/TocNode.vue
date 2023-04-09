@@ -24,7 +24,8 @@ const tl: any = props.tocList;
 
 <style lang="scss" scoped>
 ul {
-    margin-left: 10px;
+    margin-left: 15px;
+    font-size: 12px;
 
     li {
         margin: 10px 0;
