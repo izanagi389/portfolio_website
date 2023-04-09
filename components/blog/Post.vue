@@ -38,9 +38,10 @@
                 </div>
             </div>
         </v-main>
-        <aside id="toc_box">
+        <v-navigation-drawer permanent location="right" sticky="true" id="side_box" color="#edf2f6" width="inherit">
             <BlogUiToc :blogContent='text' />
-        </aside>
+            <BlogUiAdsensePortrait />
+        </v-navigation-drawer>
     </div>
 </template>
 
@@ -140,15 +141,13 @@ onMounted(async () => {
 <style lang="scss">
 .post_box {
     background-color: #edf2f6;
-    padding-top: 50px;
-    display: flex;
+    padding-top: 100px;
 
     main {
-        width: 70%;
-        padding-left: 80px;
+        width: 60%;
+        padding: 0 0 0 80px !important;
 
         #content_box {
-            padding: 0 3vw;
 
             #date {
                 display: block;
@@ -199,9 +198,12 @@ onMounted(async () => {
         }
     }
 
-    #toc_box {
-        padding: 80px 20px 0 20px;
-        width: 30%;
+    #side_box {
+        padding: 105px 0 0 20px;
+        width: 20%;
+        border-left-width: inherit;
+        margin-right: 100px;
+        height: 100vh;
     }
 
     @media screen and (max-width: 640px) {
@@ -210,7 +212,7 @@ onMounted(async () => {
             padding-left: 0 !important;
         }
 
-        #toc_box {
+        #side_box {
             width: 0;
             display: none;
         }
