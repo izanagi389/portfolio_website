@@ -2,12 +2,7 @@
     <v-card v-scroll.self="onScroll" class="overflow-y-auto pa-4" max-height="450">
         <v-chip-group column active-class="primary--text">
             <template v-for="tag in props.tagList">
-                <v-chip
-                    nuxt
-                    :href="'/blog/tags/' + tag + '/1/'"
-                    :key="tag"
-                    v-if="!(tag.length == 0)"
-                >{{ tag }}</v-chip>
+                <v-chip :href="'/blog/tags/' + tag + '/1/'" :key="tag" v-if="!(tag.length == 0)" :text="tag"></v-chip>
             </template>
         </v-chip-group>
     </v-card>
@@ -25,8 +20,14 @@ const props = defineProps({
 
 let scrollInvoked = ref(0);
 
-const onScroll =  (() => {
+const onScroll = (() => {
     scrollInvoked.value++
 })
 
 </script>
+
+<style lang="scss">
+.v-chip {
+    flex: none !important
+}
+</style>
