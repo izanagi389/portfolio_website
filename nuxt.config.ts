@@ -1,8 +1,13 @@
 export default defineNuxtConfig({
     // https://github.com/benoitdemaegdt/nuxt3-sitemap
-    modules: ['~/modules/sitemap'],
+    // modules: ['~/modules/sitemap'],
+    modules: [
+        'nuxt-simple-sitemap',
+    ],
     sitemap: {
-        hostname: process.env.HOMEPAGE_ROOT_URL,
+        // hostname: process.env.HOMEPAGE_ROOT_URL,
+        siteUrl: process.env.HOMEPAGE_ROOT_URL,
+        xsl: false,
     },
     // more configs
     typescript: {
@@ -10,6 +15,19 @@ export default defineNuxtConfig({
     },
     build: {
         transpile: ['vuetify', 'swiper']
+    },
+    nitro: {
+        prerender: {
+            crawlLinks: true,
+            ignore: [
+                "/app/middle_name/",
+                "/blog/articles/h6sc9bho3/%60/blog/articles/$%7Bcontent.id%7D%60"
+            ],
+            routes: [
+                '/',
+            ]
+        }
+
     },
     vite: {
         define: {
