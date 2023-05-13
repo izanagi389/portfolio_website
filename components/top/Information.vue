@@ -27,7 +27,7 @@
                 </v-card>
             </v-col>
             <v-col>
-                <v-card class="mx-auto text-center" max-width="250" height="500">
+                <v-card class="mx-auto" max-width="250" height="500">
                     <UiSearchForm :placeholder="information.search.placeholder"
                         :suggest-num="information.search.suggest.num" :input-width="'170px'" />
                     <TopUiTags :tag-list="tagList" />
