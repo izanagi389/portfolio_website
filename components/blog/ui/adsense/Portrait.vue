@@ -11,7 +11,7 @@
 
 const config = useRuntimeConfig();
 
-const adsenseID = ref(config.ADSENCE_CLIENT_ID);
+const adsenseID = ref(config.public.ADSENCE_CLIENT_ID);
 
 onMounted(() => {
   nextTick(() => {

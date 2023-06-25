@@ -51,7 +51,7 @@ const information = {
         title: "プロフィール",
         contents: ["サイト運営：Izanagi", "趣味：温泉・日本酒・ラーメン巡り"],
     },
-    twitterUrl: 'https://twitter.com/' + config.TWITTER_MY_USER_ID,
+    twitterUrl: 'https://twitter.com/' + config.public.TWITTER_MY_USER_ID,
     search: {
         placeholder: "ブログ内を検索",
         suggest: {

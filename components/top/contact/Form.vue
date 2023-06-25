@@ -54,7 +54,7 @@ const config = useRuntimeConfig()
 
 const contact = {
     formRun: {
-        url: config.FORM_RUN_URL,
+        url: config.public.FORM_RUN_URL,
     },
     schema: yup.object({
         name: yup.string().required("入力必須項目です。").max(50, "50文字以下で入力してください。").label("Name"),

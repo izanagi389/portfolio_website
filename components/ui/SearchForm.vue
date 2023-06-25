@@ -91,7 +91,7 @@ onBeforeUnmount(() => {
 watch(
     () => word.value,
     async (word) => {
-        await useSuggest(config.SUGGEST_API_URL, word).then((response) => {
+        await useSuggest(config.public.SUGGEST_API_URL, word).then((response) => {
             suggest_list.value = response;
         })
         reload();

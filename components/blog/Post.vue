@@ -52,8 +52,8 @@ import { hash } from "ohash"
 const route = useRoute()
 const config = useRuntimeConfig()
 
-const related_title_url = config.RELETE_TITLES_API_URL_V2 + route.params.post_id;
-const topic_url = config.TOPIC_API_URL + route.params.post_id;
+const related_title_url = config.public.RELETE_TITLES_API_URL_V2 + route.params.post_id;
+const topic_url = config.public.TOPIC_API_URL + route.params.post_id;
 
 const { data } = await useFetch("/api/microcms", {
     params: { id: route.params.post_id },
@@ -74,7 +74,7 @@ const title = data.value.title;
 const description = !!data.value.description ? data.value.description : data.value.blogContent[0].content.replace(/(<([^>]+)>)/gi, '').substr(0, 150) + "...";
 const thumbnail = data.value.thumbnail.url;
 
-const url = config.HOMEPAGE_ROOT_URL + route.fullPath;
+const url = config.public.HOMEPAGE_ROOT_URL + route.fullPath;
 
 const breadcrumbs = [
     {

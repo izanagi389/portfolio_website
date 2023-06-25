@@ -41,7 +41,7 @@ const config: any = useRuntimeConfig()
 const word: any = ref(route.query.word)
 const placeholder: string = "キーワードを入力"
 
-const searchContents: any = await useYomotsuhirasaka(config.SEARCH_API_URL, word.value)
+const searchContents: any = await useYomotsuhirasaka(config.public.SEARCH_API_URL, word.value)
 
 </script>
 
