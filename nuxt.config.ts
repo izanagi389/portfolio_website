@@ -3,9 +3,13 @@ export default defineNuxtConfig({
     // modules: ['~/modules/sitemap'],
     modules: [
         'nuxt-simple-sitemap',
+        'nuxt-gtag'
     ],
+    gtag: {
+        id: process.env.GOOGLE_ANALYTICS_ID
+    },
     sitemap: {
-        // hostname: process.env.HOMEPAGE_ROOT_URL,
+        hostname: process.env.HOMEPAGE_ROOT_URL,
         siteUrl: process.env.HOMEPAGE_ROOT_URL,
         xsl: false,
     },
