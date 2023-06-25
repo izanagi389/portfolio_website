@@ -12,7 +12,7 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const title = `ブログ検索`;
 const description = "ブログ内検索ページになります。"
-const url = config.HOMEPAGE_ROOT_URL + route.fullPath;
+const url = config.public.HOMEPAGE_ROOT_URL + route.fullPath;
 
 useHead({
     title: title,

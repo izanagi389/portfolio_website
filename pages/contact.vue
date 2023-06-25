@@ -11,7 +11,7 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const title = "お問い合わせ";
 const description = "お問い合わせページになります。"
-const url = config.HOMEPAGE_ROOT_URL + route.fullPath;
+const url = config.public.HOMEPAGE_ROOT_URL + route.fullPath;
 
 useHead({
     title: title,

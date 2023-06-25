@@ -60,7 +60,7 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const title = "プライバシーポリシー";
 const description = "プライバシーポリシーのページになります。"
-const url = config.HOMEPAGE_ROOT_URL + route.fullPath;
+const url = config.public.HOMEPAGE_ROOT_URL + route.fullPath;
 
 useHead({
     title: title,
