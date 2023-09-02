@@ -7,21 +7,25 @@ export const useConnpassEvents = (connpassData) => {
         url: string
     }
 
-    const calendarFormatter = ((data, color) => {
+    const calendarFormatter = ((data: any, color: string) => {
         let events: Array<eventsDataType> = []
 
-        data.forEach((event) => {
-            events.push({
-                name: event.title,
-                start: event.started_at.toString().split("T")[0],
-                end: event.ended_at.toString().split("T")[0],
-                color: color,
-                url: event.event_url
+        console.log(data)
+
+        if (data !== undefined) {
+            data.forEach((event: any) => {
+                events.push({
+                    name: event.title,
+                    start: event.started_at.toString().split("T")[0],
+                    end: event.ended_at.toString().split("T")[0],
+                    color: color,
+                    url: event.event_url
+                })
             })
-        })
+        }
 
         return events;
     })
 
-    return  calendarFormatter(connpassData, "orange");
+    return calendarFormatter(connpassData, "orange");
 }
