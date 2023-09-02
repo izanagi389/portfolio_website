@@ -1,47 +1,48 @@
 <template>
     <v-container id="blog_caloucel_box" class="mx-auto">
-        <h2 class="text-center text-h2">{{ swiper.title }}</h2>
-        <swiper :modules="modules" :slides-per-view="swiper.views"
-            :autoplay="{ disableOnInteraction: swiper.autoPlay, }">
-            <swiper-slide v-for="content in data['contents']" :key="content.id">
-                <a :href="`/blog/articles/${content.id}/`">
-                    <picture>
-                        <source :srcset="`${content.thumbnail.url}?fm=webp&h=${swiper.imageWidth}`" />
-                        <img :src="`${content.thumbnail.url}?h=${swiper.imageWidth}`" />
-                    </picture>
-                    <p>{{ content.title }}</p>
-                </a>
-            </swiper-slide>
-        </swiper>
+        <h2 class="text-center text-h2">{{ swiperData.title }}</h2>
+        <swiper-container :slides-per-view="swiperData.views" :autoplay="swiperData.autoPlay" @slidechange="onSlideChange">
+            <template v-for="content in data['contents']">
+                <swiper-slide>
+                    <a :href="`/blog/articles/${content.id}/`">
+                        <picture>
+                            <source :srcset="`${content.thumbnail.url}?fm=webp&h=${swiperData.imageWidth}`" />
+                            <img :src="`${content.thumbnail.url}?h=${swiperData.imageWidth}`" />
+                        </picture>
+                        <p>{{ content.title }}</p>
+                    </a>
+                </swiper-slide>
+            </template>
+        </swiper-container>
     </v-container>
 </template>
 
 <script>
-import { A11y, Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import { hash } from 'ohash'
 
-// Import Swiper styles
+import { hash } from 'ohash'
+import { register } from 'swiper/element/bundle';
+
+register();
+
 export default {
-    components: {
-        Swiper,
-        SwiperSlide,
-    },
     setup() {
-        let swiper = ref({
+        let swiperData = ref({
             title: "Latest Article",
             views: 0,
             imageWidth: 300,
-            autoPlay: false
+            autoPlay: true
         })
         const { data } = useFetch("/api/microcms", {
-            key: hash(['api-fetch', "/api/microcms", "Swiper"])
+            key: hash(['api-fetch', "/api/microcms", "aaa"])
         })
+
+        const onSlideChange = (e) => {
+            console.log('slide changed')
+        };
 
         const calculateWindowWidth = () => {
             let windowWidth = window.innerWidth < 1080 ? window.innerWidth : 1080;
-            swiper.value.views = Math.floor(windowWidth / swiper.value.imageWidth);
+            swiperData.value.views = Math.floor(windowWidth / swiperData.value.imageWidth);
         }
 
         onMounted(() => {
@@ -54,12 +55,12 @@ export default {
         })
 
         return {
-            modules: [A11y, Autoplay],
             data,
-            swiper,
+            swiperData,
+            onSlideChange,
         };
-    },
-};
+    }
+}
 </script>
 
 <style lang="scss" scoped>
