@@ -1,6 +1,7 @@
 // const nonce = "fnaso";
 
 export default defineNuxtConfig({
+    sourcemap: false,
     modules: [
         'nuxt-simple-sitemap',
         'nuxt-gtag',
