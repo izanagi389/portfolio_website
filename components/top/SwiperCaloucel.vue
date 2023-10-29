@@ -1,7 +1,7 @@
 <template>
     <v-container id="blog_caloucel_box" class="mx-auto">
         <h2 class="text-center text-h2">{{ swiperData.title }}</h2>
-        <swiper-container :slides-per-view="swiperData.views" :autoplay="swiperData.autoPlay" @slidechange="onSlideChange">
+        <swiper-container :slides-per-view="swiperData.views" :autoplay="swiperData.autoPlay" :delay="0" :speed="swiperData.speed" :loop="swiperData.loop" @slidechange="onSlideChange">
             <template v-for="content in data['contents']">
                 <swiper-slide>
                     <a :href="`/blog/articles/${content.id}/`">
@@ -30,14 +30,18 @@ export default {
             title: "Latest Article",
             views: 0,
             imageWidth: 300,
-            autoPlay: true
+            autoPlay: {
+                delay: 0
+            },
+            speed: 3000,
+            loop: true
         })
         const { data } = useFetch("/api/microcms", {
             key: hash(['api-fetch', "/api/microcms", "aaa"])
         })
 
         const onSlideChange = (e) => {
-            console.log('slide changed')
+           
         };
 
         const calculateWindowWidth = () => {
