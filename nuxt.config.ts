@@ -1,9 +1,9 @@
+// const nonce = "fnaso";
+
 export default defineNuxtConfig({
-    // https://github.com/benoitdemaegdt/nuxt3-sitemap
-    // modules: ['~/modules/sitemap'],
     modules: [
         'nuxt-simple-sitemap',
-        'nuxt-gtag'
+        'nuxt-gtag',
     ],
     gtag: {
         id: process.env.GOOGLE_ANALYTICS_ID
@@ -13,7 +13,6 @@ export default defineNuxtConfig({
         siteUrl: process.env.HOMEPAGE_ROOT_URL,
         xsl: false,
     },
-    // more configs
     typescript: {
         shim: false,
     },
@@ -25,7 +24,9 @@ export default defineNuxtConfig({
             crawlLinks: true,
             ignore: [
                 "/app/middle_name/",
-                "/blog/articles/h6sc9bho3/%60/blog/articles/$%7Bcontent.id%7D%60"
+                "/blog/articles/h6sc9bho3/%60/blog/articles/$%7Bcontent.id%7D%60",
+                // 容量不足によりプログラム可能な検索えんじにに切り替えたため自作検索ページは除外
+                "/blog/search/",
             ],
             routes: [
                 '/',
@@ -51,7 +52,7 @@ export default defineNuxtConfig({
             meta: [
                 {
                     name: 'viewport',
-                    content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0'
+                    content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0',
                 },
                 {
                     hid: 'description',
@@ -107,11 +108,12 @@ export default defineNuxtConfig({
                 { rel: 'icon', href: '/favicon.ico' },
                 {
                     rel: 'stylesheet',
-                    href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css'
+                    href: 'https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css',
                 }
             ],
             script: [
-                { async: true, src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.ADSENCE_CLIENT_ID}`, crossorigin: 'anonymous' }
+                { async: true, src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.ADSENCE_CLIENT_ID}`, crossorigin: 'anonymous' },
+                { async: true, src: 'https://cse.google.com/cse.js?cx=d419fbd8dd7914262' }
             ]
         },
 
@@ -139,18 +141,18 @@ export default defineNuxtConfig({
 
     },
     // SSG,ISG以外の時に利用
-    // routeRules: {
-    //     // リダイレクト
-    //     '/blog': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
-    //     '/blog/': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
-    //     '/blog/pages': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
-    //     '/blog/pages/': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
+    routeRules: {
+        // リダイレクト
+        //     '/blog': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
+        //     '/blog/': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
+        //     '/blog/pages': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
+        //     '/blog/pages/': { redirect: { to: '/blog/pages/1/', statusCode: 302 } },
 
-    //     // 静的ページ
-    //     '/blog/articles/**': { static: true },
-    //     '/blog/tags/**': { static: true },
+        //     // 静的ページ
+        //     '/blog/articles/**': { static: true },
+        //     '/blog/tags/**': { static: true },
 
-    //     // swr 
-    //     '/blog/pages/**': { swr: true },
-    // }
+        //     // swr 
+        //     '/blog/pages/**': { swr: true },
+    },
 });
