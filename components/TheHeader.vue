@@ -17,7 +17,7 @@
             </v-btn>
         </div>
         <div id="menu_search_box" :class="{ 'active': isActive }">
-            <UiSearchForm :placeholder="placeholder" :suggest-num="5" input-width="85vw" />
+            <div class="gcse-search"></div>
             <button class="mdi mdi-close" @click="isActive = false" aria-label="Serach box Close"></button>
         </div>
     </header>
@@ -26,8 +26,6 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify';
 import headerData from "assets/json/global_menu.json";
-
-const placeholder = ""
 
 const display = useDisplay()
 
