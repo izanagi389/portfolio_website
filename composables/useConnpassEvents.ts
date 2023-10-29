@@ -10,8 +10,6 @@ export const useConnpassEvents = (connpassData) => {
     const calendarFormatter = ((data: any, color: string) => {
         let events: Array<eventsDataType> = []
 
-        console.log(data)
-
         if (data !== undefined) {
             data.forEach((event: any) => {
                 events.push({
