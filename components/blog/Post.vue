@@ -27,7 +27,7 @@
                     <div id="topic_box">
                         <h2 id="topic_box_title">■関連トピック</h2>
                         <v-chip-group column v-if="topic_list">
-                            <v-chip v-for="topic in topic_list" :to="'/blog/search?word=' + topic" :value="topic">
+                            <v-chip v-for="topic in topic_list" :to="'#gsc.tab=0&gsc.q=' + topic" :value="topic">
                                 {{ topic }}
                             </v-chip>
                         </v-chip-group>
