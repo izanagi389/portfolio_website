@@ -9,11 +9,9 @@ export default defineNuxtConfig({
     gtag: {
         id: process.env.GOOGLE_ANALYTICS_ID
     },
-    sitemap: {
-        hostname: process.env.HOMEPAGE_ROOT_URL,
-        siteUrl: process.env.HOMEPAGE_ROOT_URL,
-        xsl: false,
-    },
+    site: {
+        url:  process.env.HOMEPAGE_ROOT_URL,
+      },
     typescript: {
         shim: false,
     },
