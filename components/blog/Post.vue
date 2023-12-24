@@ -27,7 +27,7 @@
                     <div id="topic_box">
                         <h2 id="topic_box_title">■関連トピック</h2>
                         <v-chip-group column v-if="topic_list">
-                            <v-chip v-for="topic in topic_list" :to="'#gsc.tab=0&gsc.q=' + topic" :value="topic">
+                            <v-chip v-for="topic in topic_list" :link="'#gsc.tab=0&gsc.q=' + topic" :value="topic">
                                 {{ topic }}
                             </v-chip>
                         </v-chip-group>
@@ -38,10 +38,9 @@
                 </div>
             </div>
         </v-main>
-        <v-navigation-drawer permanent location="right" sticky="true" id="side_box" color="#edf2f6" width="inherit">
+        <nav id="side_menu">
             <BlogUiToc :blogContent='text' />
-            <BlogUiAdsensePortrait />
-        </v-navigation-drawer>
+        </nav>
     </div>
 </template>
 
@@ -142,10 +141,13 @@ onMounted(async () => {
 .post_box {
     background-color: #edf2f6;
     padding-top: 100px;
+    position: relative;
+    display: flex;
 
     main {
         width: 60%;
-        padding: 0 0 0 80px !important;
+        padding: 0 0 0 100px !important;
+        flex: none !important;
 
         #content_box {
 
@@ -198,28 +200,28 @@ onMounted(async () => {
         }
     }
 
-    #side_box {
-        padding: 105px 0 0 20px;
-        width: 20%;
-        border-left-width: inherit;
-        margin-right: 100px;
-        height: 100vh;
-    }
-
-    @media screen and (max-width: 640px) {
+    @media screen and (max-width: 768px) {
         main {
             width: 100%;
-            padding-left: 0 !important;
-        }
-
-        #side_box {
-            width: 0;
-            display: none;
+            padding:0  20px !important ;
         }
     }
 }
 
 #amenomuboko_box {
     margin-bottom: 100px;
+}
+
+#side_menu {
+    margin-right: 100px;
+    position: fixed;
+    right: 0;
+    width: 200px;
+}
+
+@media screen and (max-width: 768px) {
+    #side_menu {
+        display: none;
+    }
 }
 </style>
