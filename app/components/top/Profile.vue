@@ -1,84 +1,53 @@
 <template>
   <!-- プロフィールカードセクション -->
-  <section class="py-12">
-    <div class="container mx-auto px-4">
-      <div class="">
-        <!-- プロフィールカード -->
-        <div
-          class="bg-white rounded-lg shadow-lg overflow-hidden card-slide-in hover-effect"
-        >
-          <div class="flex flex-col items-center p-6">
-            <!-- <img
-                src="profile.jpg"
-                alt="プロフィール画像"
-                class="w-32 h-32 rounded-full border-4 border-summer mb-4 transition-transform duration-300 transform hover:scale-110"
-              /> -->
-            <h2 class="text-2xl font-semibold mb-2 text-summer text-fade-in">
-              田中 太郎
-            </h2>
-            <p class="text-gray-600 mb-4 text-fade-in">
-              フリーランスのグラフィックデザイナー
-            </p>
-
-            <!-- スキルセクション -->
-            <div class="mb-4 w-full">
-              <h3 class="text-xl font-semibold mb-2 text-summer text-fade-in">スキル</h3>
-              <ul class="list-disc list-inside text-gray-600">
-                <li class="hover-effect bg-gray-200 rounded-lg p-3 mb-2 shadow-md">
-                  Adobe Creative Suite (Photoshop, Illustrator, InDesign)
-                </li>
-                <li class="hover-effect bg-gray-200 rounded-lg p-3 mb-2 shadow-md">
-                  HTML/CSS
-                </li>
-                <li class="hover-effect bg-gray-200 rounded-lg p-3 mb-2 shadow-md">
-                  UX/UIデザイン
-                </li>
-              </ul>
-            </div>
-
-            <!-- 成果セクション -->
-            <div class="mb-4 w-full">
-              <h3 class="text-xl font-semibold mb-2 text-summer text-fade-in">
-                成果や実績
-              </h3>
-              <ul class="list-disc list-inside text-gray-600">
-                <li class="hover-effect bg-gray-200 rounded-lg p-3 mb-2 shadow-md">
-                  XYZ株式会社のロゴデザインリニューアル
-                </li>
-                <li class="hover-effect bg-gray-200 rounded-lg p-3 mb-2 shadow-md">
-                  ABCスタートアップのウェブサイトデザイン
-                </li>
-              </ul>
-            </div>
-
-            <!-- 連絡先セクション -->
-            <div class="w-full text-center">
-              <h3 class="text-xl font-semibold mb-2 text-summer text-fade-in">連絡先</h3>
-              <p>
-                <a
-                  href="mailto:tanaka@example.com"
-                  class="text-summer font-semibold hover:underline"
-                  >メールを送る</a
-                >
-              </p>
-              <p>
-                <a
-                  href="https://linkedin.com/in/tanaka"
-                  class="text-summer font-semibold hover:underline"
-                  >LinkedIn</a
-                >
-              </p>
-              <p>
-                <a
-                  href="https://instagram.com/taro_tanaka_design"
-                  class="text-summer font-semibold hover:underline"
-                  >Instagram</a
-                >
-              </p>
-            </div>
-          </div>
+  <section>
+    <div class="p-4 w-full self-center">
+      <div
+        class="text-center w-4/5 ml-auto mr-auto border-solid border-2 border-sky-500 bg-white p-4"
+      >
+        <img
+          src="@/assets/img/profile_image.png"
+          class="rounded-full w-36 ml-auto mr-auto mb-4"
+          alt=""
+        />
+        <div class="mt-4 mb-4 text-sm">{{ profile.ncikname.title }}</div>
+        <div class="mt-4 mb-4 text-6xl font_dancing_script">
+          {{ profile.ncikname.content }}
+        </div>
+        <div class="mt-10 mb-4 text-sm">{{ profile.hobby.title }}</div>
+        <div>{{ profile.hobby.content }}</div>
+        <div class="flex flex-wrap justify-end">
+          <template v-for="a in account">
+            <a :href="a.href" target="_blank" rel="noopener"><i :class="a.class"></i></a>
+          </template>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const profile = {
+  ncikname: {
+    title: "ニックネーム",
+    content: "Izanagi",
+  },
+  hobby: {
+    title: "趣味",
+    content: "ゲーム（RPG系）・酒（日本酒やビールが好き！）・ラーメン巡り",
+  },
+};
+
+const account = [
+  {
+    name: "X（旧Twitter）",
+    href: "https://x.com/izanagiblog",
+    class: "fa-brands fa-x-twitter bg-black text-white rounded-full p-1",
+  },
+  {
+    name: "Github",
+    href: "https://github.com/izanagi389",
+    class: "fa-brands fa-github fa-xl ml-2",
+  },
+];
+</script>

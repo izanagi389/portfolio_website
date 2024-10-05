@@ -4,7 +4,7 @@
       class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
       aria-label="Global"
     >
-      <divv class="flex lg:flex-1" />
+      <div class="flex lg:flex-1" />
       <div class="flex lg:hidden">
         <button
           type="button"
@@ -64,9 +64,7 @@
           </transition>
         </Popover>
 
-        <a href="/app" class="text-sm font-semibold leading-6 text-gray-900"
-          >App</a
-        >
+        <a href="/app" class="text-sm font-semibold leading-6 text-gray-900">App</a>
 
         <a href="/privacy" class="text-sm font-semibold leading-6 text-gray-900"
           >Privacy Policy</a

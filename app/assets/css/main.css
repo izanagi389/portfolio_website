@@ -6,10 +6,6 @@ https://github.com/hiloki/flocss
 
 @import url(./top.css);
 
-main {
-    min-height: calc(100vh - 2rem);
-}
-
 header {
     z-index: 1;
 }
@@ -18,4 +14,13 @@ svg {
     pointer-events: none;
 }
 
+.font_dancing_script {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
 
+.twitter-timeline {
+    width: 300px;
+}

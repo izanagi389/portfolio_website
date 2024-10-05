@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="c-bg-image">
     <!-- <NuxtRouteAnnouncer />
     <NuxtWelcome /> -->
     <TheHeader />
@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 const runtimeConfig = useRuntimeConfig();
 

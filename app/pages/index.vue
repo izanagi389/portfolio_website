@@ -1,15 +1,18 @@
 <template>
-  <main id="c-bg-image" class="pt-14">
+  <main class="max-w-7xl pt-14 ml-auto mr-auto">
     <div id="c-title-box">
       <div id="c-top-title" v-html="split_list"></div>
     </div>
     <TopPosts :contents="contents" />
     <TopTags />
     <TopProfile />
+    <TopWorks />
+    
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
+
 const runtimeConfig = useRuntimeConfig();
 
 const title = runtimeConfig.public.site_title;
@@ -26,36 +29,7 @@ title.split("", -1).forEach((element) => {
 
 split_list = split_list.join("");
 
-let contents = [
-  {
-    title: "記事タイトル",
-    img: "logo.png",
-    text:
-      "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
-    href: "#",
-  },
-  {
-    title: "記事タイトル",
-    img: "logo.png",
-    text:
-      "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
-    href: "#",
-  },
-  {
-    title: "記事タイトル",
-    img: "logo.png",
-    text:
-      "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
-    href: "#",
-  },
-  {
-    title: "記事タイトル",
-    img: "logo.png",
-    text:
-      "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト",
-    href: "#",
-  },
-];
+let contents = await useFetchArticles(3);
 
 let tags = ["Hello", "world", "normally", "you", "want", "more", "words", "than", "this"];
 </script>
