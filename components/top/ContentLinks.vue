@@ -56,16 +56,7 @@ const cards: Array<CardDataType> = [
         width: 400,
         href: "/blog/pages/1/",
         maintenance: false,
-    },
-    {
-        title: 'Japanese MIddle Name',
-        src: '/images/product/japaneseMidleName.webp',
-        flex: 4,
-        height: 250,
-        width: 400,
-        href: "/app/middle_name/",
-        maintenance: false,
-    },
+    }
 ]
 
 

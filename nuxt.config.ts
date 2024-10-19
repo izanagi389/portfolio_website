@@ -26,12 +26,6 @@ export default defineNuxtConfig({
   nitro: {
       prerender: {
           crawlLinks: true,
-          ignore: [
-              "/app/middle_name/",
-              "/blog/articles/h6sc9bho3/%60/blog/articles/$%7Bcontent.id%7D%60",
-              // 容量不足によりプログラム可能な検索エンジンに切り替えたため自作検索ページは除外
-              "/blog/search/",
-          ],
           routes: [
               '/',
           ]
