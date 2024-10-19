@@ -1,14 +1,5 @@
 <template>
     <div class="mx-auto" id="blog_box">
-        <ClientOnly fallback-tag="span">
-            <v-card max-width="900" class="mx-auto" id="search_result_box">
-                <v-row dense>
-                    <v-col cols="12">
-                        <BlogUiAdsenseLandscape />
-                    </v-col>
-                </v-row>
-            </v-card>
-        </ClientOnly>
         <div class="d-flex flex-wrap justify-space-around" style="background-color: #EDF2F6;">
             <a v-for="content in data.contents" :href="`/blog/articles/${content.id}/`" :key="content.id">
                 <v-card style="margin: 20px 5px" width="350px">
@@ -34,13 +25,6 @@ const props = defineProps({
 const data: object = props.data
 
 const config = useRuntimeConfig();
-
-onMounted(() => {
-    nextTick(() => {
-        (adsbygoogle = window.adsbygoogle || []).push({})
-    })
-})
-
 
 </script>
 

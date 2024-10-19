@@ -11,31 +11,6 @@
                     <div v-html="c.content"></div>
                     <div v-html="c.html"></div>
                 </article>
-
-                <div id="amenomuboko_box" v-if="componentShow">
-                    <div id="realted_box">
-                        <h2 id="realted_box_title">■関連記事(精度そんな良くないかもwww)</h2>
-                        <ul id="related_title_list" v-if="related_data">
-                            <li class="related_title" v-for="r in related_data">
-                                <a :href="`/blog/articles/${r.id}/`">{{ r.title }}</a>
-                            </li>
-                        </ul>
-                        <div v-else class="text-center">
-                            <v-progress-circular indeterminate color="primary"></v-progress-circular>
-                        </div>
-                    </div>
-                    <div id="topic_box">
-                        <h2 id="topic_box_title">■関連トピック</h2>
-                        <v-chip-group column v-if="topic_list">
-                            <v-chip v-for="topic in topic_list" :link="'#gsc.tab=0&gsc.q=' + topic" :value="topic">
-                                {{ topic }}
-                            </v-chip>
-                        </v-chip-group>
-                        <div v-else class="text-center">
-                            <v-progress-circular indeterminate color="primary"></v-progress-circular>
-                        </div>
-                    </div>
-                </div>
             </div>
         </v-main>
         <nav id="side_menu">
@@ -51,7 +26,7 @@ import { hash } from "ohash"
 const route = useRoute()
 const config = useRuntimeConfig()
 
-const related_title_url = config.public.RELETE_TITLES_API_URL_V2 + route.params.post_id;
+
 const topic_url = config.public.TOPIC_API_URL + route.params.post_id;
 
 const { data } = await useFetch("/api/microcms", {
@@ -120,19 +95,10 @@ const reload = (() => {
 })
 
 
-const related_data = ref();
 const topic_list = ref();
 
 onMounted(async () => {
     Prism.highlightAll();
-    window.onload = async () => {
-
-        const array = await useAmenomuboko(related_title_url, topic_url)
-
-        related_data.value = array[0];
-        topic_list.value = array[1];
-        reload()
-    }
 })
 
 </script>
@@ -146,7 +112,7 @@ onMounted(async () => {
 
     main {
         width: 60%;
-        padding: 0 0 0 100px !important;
+        padding: 0 0 100px 100px !important;
         flex: none !important;
 
         #content_box {
