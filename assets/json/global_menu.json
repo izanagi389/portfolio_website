@@ -1,0 +1,9 @@
+{
+    "title": "Izanagi's site",
+    "nav": [
+        {
+            "text": "ブログ",
+            "to": "/blog/pages/1/"
+        }
+    ]
+}
