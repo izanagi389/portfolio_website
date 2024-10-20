@@ -4,7 +4,7 @@
       <div class="">ブログページ</div>
       <ul class="grid grid-cols-4 gap-4">
         <template  v-for="(d, index) in data">
-          <li v-if="index == 0" class="row-span-2 col-span-2">
+          <li v-if="index == 0" class="row-span-2 col-span-2 bg-white">
             <a :href="'/blog/post/' + d.id" class="row-span-3">
               <img :src="d.thumbnail.url" alt="" />
               {{ d.title }}
@@ -12,7 +12,7 @@
             </a>
           </li>
 
-          <li v-else>
+          <li v-else class="bg-white">
             <a :href="'/blog/post/' + d.id" class="row-span-3">
               <img :src="d.thumbnail.url" alt="" />
               {{ d.title }}

@@ -3,10 +3,10 @@
     <div id="c-title-box">
       <div id="c-top-title" v-html="split_list"></div>
     </div>
+    <TopWorks />
+    <TopProfile />
     <TopPosts :contents="contents" />
     <TopTags />
-    <TopProfile />
-    <TopWorks />
     
   </main>
 </template>

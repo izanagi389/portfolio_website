@@ -1,6 +1,6 @@
 <template>
   <!-- プロフィールカードセクション -->
-  <section>
+  <section class="pb-32">
     <div class="p-4 w-full self-center">
       <div
         class="text-center w-4/5 ml-auto mr-auto border-solid border-2 border-sky-500 bg-white p-4"
