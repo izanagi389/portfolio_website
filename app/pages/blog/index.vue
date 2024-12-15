@@ -26,7 +26,7 @@ useHead({
 const data = await useFetchArticles();
 
 const dateFommter = (date) => {
-  const date_objext = new Date(date)
-  return `${date_objext.getFullYear()}年${date_objext.getMonth()}月${date_objext.getDate()}日`
+  const date_object = new Date(date)
+  return `${date_object.getFullYear()}年${date_object.getMonth()}月${date_object.getDate()}日`
 }
 </script>
