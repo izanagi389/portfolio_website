@@ -5,7 +5,7 @@
     </div>
     <TopWorks />
     <TopProfile />
-    <TopPosts :contents="contents" />
+    <TopPosts :contents="data.contents" />
     <TopTags />
     
   </main>
@@ -26,5 +26,7 @@ title.split("", -1).forEach((element:string) => {
 });
 
 let split_str = split_list.join("");
-let contents = await useFetchArticles(3);
+let { data } = await useAsyncData("mountains", () =>
+  $fetch(`/api/microcms?limit=3`)
+);
 </script>

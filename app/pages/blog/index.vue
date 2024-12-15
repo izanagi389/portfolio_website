@@ -1,32 +1,58 @@
 <template>
   <main class="p-20">
     <section>
-      <div class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]">Articles</div>
-      <ul class="flex flex-wrap justify-evenly">
-        <li v-for="d in data" :key="d" class="bg-white w-1/4 m-2 p-3 rounded-md hover:scale-105 duration-300 ">
-          <a :href="'/blog/post/' + d.id" class="">
-            <img :src="d.thumbnail.url" alt="" class="h-64 object-cover w-full" />
-            <div class="truncate">{{ d.title }}</div>
-            <div class="h-10 flex flex-col text-end"> 
-              <time class="mt-auto" :datetime="d.updatedAt">{{dateFommter(d.updatedAt)}}</time>
-            </div>
-          </a>
-        </li>
+      <div
+        class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]"
+      >
+        Articles
+      </div>
+      <ul class="flex flex-wrap justify-between">
+        <template v-for="c in contents" :key="c">
+          <BlogList :content="c" v-if="contents_show" />
+        </template>
       </ul>
     </section>
+    <button v-if="more_btn_show" @click="moreContents">moreボタン</button>
   </main>
 </template>
 
 <script setup>
-
 useHead({
   title: "記事一覧",
 });
 
-const data = await useFetchArticles();
+let offset = 9;
+let limit = 9;
 
-const dateFommter = (date) => {
-  const date_object = new Date(date)
-  return `${date_object.getFullYear()}年${date_object.getMonth()}月${date_object.getDate()}日`
-}
+let { data } = await useAsyncData("mountains", () =>
+  $fetch(`/api/microcms?limit=${limit}`)
+);
+
+let contents = data.value.contents;
+let totalCount = data.value.totalCount;
+
+let more_btn_show = ref(true);
+
+const moreContents = async () => {
+  data = await useAsyncData("contents", () =>
+    $fetch(`/api/microcms?offset=${offset}&limit=${limit}`)
+  );
+  contents = contents.concat(data.data.value.contents);
+  toggleComponent();
+
+  if (totalCount > offset) {
+    offset += 9;
+  }
+  if (totalCount < offset) {
+    more_btn_show.value = false;
+  }
+};
+
+let contents_show = ref(true);
+
+const toggleComponent = () => {
+  contents_show.value = false;
+  nextTick();
+  contents_show.value = true;
+};
 </script>
