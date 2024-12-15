@@ -17,7 +17,6 @@ export default defineNuxtConfig({
       site_title: "Izanagi's-portfolio-site"
     }
   },
-
   app: {
     head: {
       htmlAttrs: {
@@ -57,7 +56,7 @@ export default defineNuxtConfig({
       style: [],
       script: [
         {
-           "src": "https://platform.twitter.com/widgets.js",
+          "src": "https://platform.twitter.com/widgets.js",
         }
       ],
       noscript: []
