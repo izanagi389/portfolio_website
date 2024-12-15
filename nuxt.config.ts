@@ -63,5 +63,18 @@ export default defineNuxtConfig({
       noscript: []
     }
   },
+  vite: {
+    build: {
+      target: ['esnext']
+    },
+  },
+  nitro: {
+    esbuild: {
+      options: {
+        // Node.js のバージョンのみ指定すればOK
+        target: 'esnext',
+      },
+    },
+  },
 
 })

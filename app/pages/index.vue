@@ -1,7 +1,7 @@
 <template>
   <main class="max-w-7xl pt-14 ml-auto mr-auto">
     <div id="c-title-box">
-      <div id="c-top-title" v-html="split_list"></div>
+      <div id="c-top-title" v-html="split_str"></div>
     </div>
     <TopWorks />
     <TopProfile />
@@ -12,14 +12,12 @@
 </template>
 
 <script setup lang="ts">
-
 const runtimeConfig = useRuntimeConfig();
-
 const title = runtimeConfig.public.site_title;
 
-let split_list = [];
+let split_list:any[] = [];
 
-title.split("", -1).forEach((element) => {
+title.split("", -1).forEach((element:string) => {
   if (element == "-") {
     split_list.push("<span>&nbsp;</span>");
   } else {
@@ -27,9 +25,6 @@ title.split("", -1).forEach((element) => {
   }
 });
 
-split_list = split_list.join("");
-
+let split_str = split_list.join("");
 let contents = await useFetchArticles(3);
-
-let tags = ["Hello", "world", "normally", "you", "want", "more", "words", "than", "this"];
 </script>

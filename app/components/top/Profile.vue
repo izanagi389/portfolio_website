@@ -17,7 +17,7 @@
         <div class="mt-10 mb-4 text-sm">{{ profile.hobby.title }}</div>
         <div>{{ profile.hobby.content }}</div>
         <div class="flex flex-wrap justify-end">
-          <template v-for="a in account">
+          <template v-for="a in account" :key="a">
             <a :href="a.href" target="_blank" rel="noopener"><i :class="a.class"></i></a>
           </template>
         </div>
