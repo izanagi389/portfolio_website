@@ -8,13 +8,13 @@
       </div>
       <ul class="flex flex-wrap justify-between">
         <template v-for="c in contents" :key="c">
-          <BlogList :content="c" v-if="contents_show" />
+          <BlogCardList :content="c" v-if="contents_show" />
         </template>
       </ul>
     </section>
     <div class="text-center mt-10">
       <button
-        class="w-72 p-4 text-sky-500 hover:text-white bg-white hover:bg-sky-500 rounded-full duration-300"
+        class="w-72 p-4 text-sky-500 hover:text-white bg-white hover:bg-sky-500 shadow-lg shadow-blue-500/50 hover:shadow-inherit rounded-full duration-300"
         v-if="more_btn_show"
         @click="moreContents"
       >
