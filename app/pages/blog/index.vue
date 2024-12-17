@@ -6,21 +6,16 @@
       >
         Articles
       </div>
-      <ul class="flex flex-wrap justify-between">
+      <!-- <ul class="flex flex-wrap justify-between">
         <template v-for="c in contents" :key="c">
           <BlogCardList :content="c" v-if="contents_show" />
         </template>
-      </ul>
+      </ul> -->
+      <BlogCardList :contents="contents" :contents_show="contents_show" />
     </section>
-    <div class="text-center mt-10">
-      <button
-        class="w-72 p-4 text-sky-500 hover:text-white bg-white hover:bg-sky-500 shadow-lg shadow-blue-500/50 hover:shadow-inherit rounded-full duration-300"
-        v-if="more_btn_show"
-        @click="moreContents"
-      >
-        More
-      </button>
-    </div>
+    <section class="text-center mt-10">
+      <BlogMoreBtn :more_btn_show="more_btn_show" @more-contents="moreContents" />
+    </section>
   </main>
 </template>
 
@@ -29,16 +24,16 @@ useHead({
   title: "記事一覧",
 });
 
-let offset = 9;
-let limit = 9;
+// 記事取得時のパラメータを設定
+let offset = 9, limit = 9;
 
+// 初期表示の記事データを取得
 let { data } = await useAsyncData("mountains", () =>
   $fetch(`/api/microcms?limit=${limit}`)
 );
+let contents = data.value.contents, totalCount = data.value.totalCount;
 
-let contents = data.value.contents;
-let totalCount = data.value.totalCount;
-
+// moreボタンの表示・非表示
 let more_btn_show = ref(true);
 
 const moreContents = async () => {
@@ -56,8 +51,8 @@ const moreContents = async () => {
   }
 };
 
+// コンポーネントの再読み込み
 let contents_show = ref(true);
-
 const toggleComponent = () => {
   contents_show.value = false;
   nextTick();
