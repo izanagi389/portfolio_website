@@ -12,7 +12,15 @@
         </template>
       </ul>
     </section>
-    <button v-if="more_btn_show" @click="moreContents">moreボタン</button>
+    <div class="text-center mt-10">
+      <button
+        class="w-72 p-4 text-sky-500 hover:text-white bg-white hover:bg-sky-500 rounded-full duration-300"
+        v-if="more_btn_show"
+        @click="moreContents"
+      >
+        More
+      </button>
+    </div>
   </main>
 </template>
 
