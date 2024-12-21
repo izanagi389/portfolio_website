@@ -4,16 +4,16 @@
       <div
         class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]"
       >
-        記事タイトル
+        {{ title }}
       </div>
 
-      <section>
+      <section class="m-10 p-2 bg-white ">
         <template v-for="c in contents" :key="c.id">
-          <div v-html="c.content"></div>
+          <div class="leading-[4rem]" v-html="c.content"></div>
           <Shiki
-            v-if="c.viewHtml.includes('blockquote') == false"
+            v-if="c.viewHtml.includes('blockquote') == false && c.viewHtml !== ''"
             :code="c.viewHtml"
-            theme="github-dark-dimmed"
+            :theme="theme"
             :lang="c.lang"
           />
           <div v-else v-html="c.viewHtml" />
@@ -28,11 +28,16 @@ const route = useRoute();
 const post_id = route.params.post_id;
 
 // 初期表示の記事データを取得
-let { data } = await useAsyncData("mountains", () =>
+let { data }: any = await useAsyncData("mountains", () =>
   $fetch(`/api/microcms?post_id=${post_id}`)
 );
-let contents = data.value.blogContent;
 
+let theme = "github-dark-dimmed"
+
+const title = data.value.title;
+const contents = data.value.blogContent;
+
+// pre,codeタグを削除
 const removetags = (element: string) => {
   let e;
 
@@ -48,6 +53,7 @@ const removetags = (element: string) => {
   return e;
 };
 
+// コードの言語を取得
 const codeLang = (element: string) => {
   let lang;
 
@@ -87,5 +93,10 @@ contents.forEach((element) => {
 <style>
 .shiki {
   display: block;
+  padding: 10px 20px;
+}
+
+img{
+  border: 1px solid black;
 }
 </style>
