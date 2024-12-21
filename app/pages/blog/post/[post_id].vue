@@ -7,11 +7,11 @@
         {{ title }}
       </div>
 
-      <section class="m-10 p-2 bg-white ">
+      <section class="m-10 p-2 bg-white">
         <template v-for="c in contents" :key="c.id">
           <div class="leading-[4rem]" v-html="c.content"></div>
           <Shiki
-            v-if="c.viewHtml.includes('blockquote') == false && c.viewHtml !== ''"
+            v-if="c.viewHtml !== '' && c.html.includes('blockquote') == false"
             :code="c.viewHtml"
             :theme="theme"
             :lang="c.lang"
@@ -32,16 +32,17 @@ let { data }: any = await useAsyncData("mountains", () =>
   $fetch(`/api/microcms?post_id=${post_id}`)
 );
 
-let theme = "github-dark-dimmed"
+let theme = "github-dark-dimmed";
 
 const title = data.value.title;
 const contents = data.value.blogContent;
 
+let i = 0;
 // pre,codeタグを削除
 const removetags = (element: string) => {
   let e;
 
-  if (typeof element == "string") {
+  if (typeof element == "string" && element !== undefined) {
     e = element.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     e = e.replace(/<.*pre.*>/g, "");
     e = e.replace(/<.*code.*>/g, "");
@@ -50,6 +51,7 @@ const removetags = (element: string) => {
     e = "";
   }
 
+  console.log(typeof e);
   return e;
 };
 
@@ -84,9 +86,9 @@ const codeLang = (element: string) => {
   return lang;
 };
 
-contents.forEach((element) => {
-  element.lang = codeLang(element.html);
-  element.viewHtml = removetags(element.html);
+contents.forEach((content: any) => {
+  content.lang = codeLang(content.html);
+  content.viewHtml = removetags(content.html);
 });
 </script>
 
@@ -96,7 +98,7 @@ contents.forEach((element) => {
   padding: 10px 20px;
 }
 
-img{
+img {
   border: 1px solid black;
 }
 </style>
