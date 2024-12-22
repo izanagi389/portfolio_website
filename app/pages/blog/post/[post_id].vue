@@ -1,24 +1,28 @@
 <template>
   <main class="pt-20">
     <section>
-      <div
-        class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]"
-      >
+      <div class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]">
         {{ title }}
       </div>
 
-      <section class="m-10 p-2 bg-white">
-        <template v-for="c in contents" :key="c.id">
-          <div class="leading-[4rem]" v-html="c.content"></div>
-          <Shiki
-            v-if="c.viewHtml !== '' && c.html.includes('blockquote') == false"
-            :code="c.viewHtml"
-            :theme="theme"
-            :lang="c.lang"
-          />
-          <div v-else v-html="c.viewHtml" />
-        </template>
-      </section>
+      <div class="flex flex-row p-5">
+        <section class="p-5 m-5 bg-white w-3/4">
+          <template v-for="c in contents" :key="c.id">
+            <div class="leading-[4rem]" v-html="c.content"></div>
+            <Shiki
+              v-if="c.viewHtml !== '' && c.html.includes('blockquote') == false"
+              :code="c.viewHtml"
+              :theme="theme"
+              :lang="c.lang"
+            />
+            <div v-else v-html="c.viewHtml" />
+          </template>
+        </section>
+
+      <aside class="p-5 m-5 w-1/4 bg-black text-white">
+        目次表示予定
+      </aside>
+      </div>
     </section>
   </main>
 </template>
@@ -51,7 +55,7 @@ const removetags = (element: string) => {
     e = "";
   }
 
-  console.log(typeof e);
+  console.log(e);
   return e;
 };
 
@@ -96,6 +100,7 @@ contents.forEach((content: any) => {
 .shiki {
   display: block;
   padding: 10px 20px;
+  overflow: auto;
 }
 
 img {
