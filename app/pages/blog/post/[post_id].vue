@@ -6,7 +6,7 @@
       </div>
 
       <div class="flex flex-row p-5">
-        <section class="p-5 m-5 bg-white w-3/4">
+        <section ref="content" class="p-5 m-5 bg-white w-3/4">
           <template v-for="c in contents" :key="c.id">
             <div class="leading-[4rem]" v-html="c.content"></div>
             <Shiki
@@ -41,7 +41,6 @@ let theme = "github-dark-dimmed";
 const title = data.value.title;
 const contents = data.value.blogContent;
 
-let i = 0;
 // pre,codeタグを削除
 const removetags = (element: string) => {
   let e;
@@ -55,7 +54,6 @@ const removetags = (element: string) => {
     e = "";
   }
 
-  console.log(e);
   return e;
 };
 
@@ -88,12 +86,51 @@ const codeLang = (element: string) => {
   }
 
   return lang;
+
 };
 
 contents.forEach((content: any) => {
   content.lang = codeLang(content.html);
   content.viewHtml = removetags(content.html);
 });
+
+const test = useTemplateRef("content")
+let topic:any[] = []
+onMounted( () => {
+  if(test.value) {
+    test.value.focus()
+    let list = test.value.querySelectorAll("h1, h2, h3, h4, h5")
+    console.log(list)
+    
+    let i3 = 0
+    let i4 = 0
+    list.forEach((l) => {
+      let t = {
+        id:l.id,
+        text: l.innerText,
+        tag: l.localName,
+        children: []
+      }
+
+      if(l.localName == "h2") {
+        topic.push(t)
+        i3 = 0
+        i4 = 0
+      } else if(l.localName == "h3" && topic.length !== 0) {
+        topic[topic.length - 1].children.push(t)
+        i3++
+        i4 = 0
+      } else if(l.localName == "h4" && i3 - 1 >= 0) {
+        topic[topic.length - 1].children[i3 - 1].children.push(t)
+        i4++
+      } else if(l.localName == "h5" && i3 - 1 >= 0 && i4 - 1 >= 0) {
+        topic[topic.length - 1].children[i3 - 1].children[i4 - 1].children.push(t)
+      }
+
+      console.log(topic)
+    })
+  }
+})
 </script>
 
 <style>
