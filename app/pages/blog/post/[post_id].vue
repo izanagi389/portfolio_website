@@ -9,19 +9,15 @@
         <section ref="content" class="p-5 m-5 bg-white w-3/4">
           <template v-for="c in contents" :key="c.id">
             <div class="leading-[4rem]" v-html="c.content"></div>
-            <Shiki
-              v-if="c.viewHtml !== '' && c.html.includes('blockquote') == false"
-              :code="c.viewHtml"
-              :theme="theme"
-              :lang="c.lang"
-            />
+            <Shiki v-if="c.viewHtml !== '' && c.html.includes('blockquote') == false" :code="c.viewHtml" :theme="theme"
+              :lang="c.lang" />
             <div v-else v-html="c.viewHtml" />
           </template>
         </section>
 
-      <aside class="p-5 m-5 w-1/4 bg-black text-white">
-        目次表示予定
-      </aside>
+        <aside class="p-5 m-5 w-1/4 bg-black text-white">
+          <BlogTopic :topic="topic" />
+        </aside>
       </div>
     </section>
   </main>
@@ -95,40 +91,38 @@ contents.forEach((content: any) => {
 });
 
 const test = useTemplateRef("content")
-let topic:any[] = []
-onMounted( () => {
-  if(test.value) {
+let topic: any[] = []
+onMounted(() => {
+  if (test.value) {
     test.value.focus()
     let list = test.value.querySelectorAll("h1, h2, h3, h4, h5")
-    console.log(list)
-    
+
     let i3 = 0
     let i4 = 0
     list.forEach((l) => {
       let t = {
-        id:l.id,
+        id: l.id,
         text: l.innerText,
         tag: l.localName,
         children: []
       }
 
-      if(l.localName == "h2") {
+      if (l.localName == "h2") {
         topic.push(t)
         i3 = 0
         i4 = 0
-      } else if(l.localName == "h3" && topic.length !== 0) {
+      } else if (l.localName == "h3" && topic.length !== 0) {
         topic[topic.length - 1].children.push(t)
         i3++
         i4 = 0
-      } else if(l.localName == "h4" && i3 - 1 >= 0) {
+      } else if (l.localName == "h4" && i3 - 1 >= 0) {
         topic[topic.length - 1].children[i3 - 1].children.push(t)
         i4++
-      } else if(l.localName == "h5" && i3 - 1 >= 0 && i4 - 1 >= 0) {
+      } else if (l.localName == "h5" && i3 - 1 >= 0 && i4 - 1 >= 0) {
         topic[topic.length - 1].children[i3 - 1].children[i4 - 1].children.push(t)
       }
-
-      console.log(topic)
     })
+    console.log(topic)
   }
 })
 </script>
