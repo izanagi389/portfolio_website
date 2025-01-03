@@ -1,9 +1,7 @@
 <template>
     <main class="max-w-7xl pt-14 ml-auto mr-auto">
         <section>
-            <div class="w-full text-center text-3xl pb-3 mt-10 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]">
-                Privacy Policy
-            </div>
+            <PartsTitle :title="'Privacy Policy'" />
             <div class="bg-white p-10 m-10">
                 <template v-for="p in privacy">
                     <h2 v-if="p.title.length > 0">{{ p.title }}</h2>

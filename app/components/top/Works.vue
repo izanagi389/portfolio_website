@@ -1,6 +1,6 @@
 <template>
   <section class="pb-32">
-    <div class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]">Products</div>
+    <PartsTitle :title="'Products'" />
     <div class="w-full self-center">
       <div class="flex justify-center flex-wrap pr-10 pl-10 pt-10">
         <template v-for="w in works">

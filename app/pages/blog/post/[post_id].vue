@@ -1,13 +1,11 @@
 <template>
-  <main class="pt-20">
+  <main id="post" class="pt-20">
     <section>
       <div class="hover:opacity-50 pl-5 ml-5">
-            <i class="fa-solid fa-arrow-left-long mr-5"></i>
-            <a href="/blog/">Articles</a>
-          </div>
-      <div class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]">
-        {{ title }}
+        <i class="fa-solid fa-arrow-left-long mr-5"></i>
+        <a href="/blog/">Articles</a>
       </div>
+      <PartsTitle :title="title" />
       <div class="flex flex-row p-5">
         <section ref="content" class="p-5 m-5 bg-white w-2/3 min-w-80">
           <template v-for="c in contents" :key="c.id">
@@ -33,7 +31,7 @@
   </main>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" local>
 const route = useRoute();
 const post_id = route.params.post_id;
 
@@ -137,50 +135,5 @@ onMounted(() => {
 </script>
 
 <style>
-.shiki {
-  display: block;
-  padding: 10px 20px;
-  overflow: auto;
-}
-
-img {
-  border: 1px solid black;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 25px;
-  padding: 30px 0 10px 0;
-}
-
-h3 {
-  font-weight: bold;
-  font-size: 22px;
-  padding: 20px 0 5px 0;
-}
-
-h4 {
-  font-weight: bold;
-  font-size: 20px;
-  padding: 10px 0 5px 0;
-}
-
-h5 {
-  font-weight: bold;
-  font-size: 818px;
-  padding: 10px 0 5px 0;
-}
-
-/* 目次クリック時にヘッダーと被らないように調整 */
-h2:before,
-h3:before,
-h4:before,
-h5:before,
-h6:before {
-  content: "";
-  display: block;
-  height: 100px;
-  margin-top: -70px;
-  visibility: hidden;
-}
+@import url("~/assets/css/post.css");
 </style>

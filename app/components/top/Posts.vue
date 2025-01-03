@@ -1,12 +1,8 @@
 <template>
   <section class="pb-32">
-    <div
-      class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]"
-    >
-      Develop Blog
-    </div>
+    <PartsTitle :title="'Develop Blog'" />
     <div class="w-full self-center">
-      <ul class="pl-4 pr-4">
+      <ul class="pr-10 pl-10 pt-10">
         <li v-for="c in Props.contents" class="mb-2 hover:scale-105 ease-in duration-300">
           <a :href ="`/blog/post/${c.id}`" class="flex justify-center flex-wrap">
             <img :src="c.thumbnail.url" alt="" class="h-36 w-36 object-cover bg-white" />
