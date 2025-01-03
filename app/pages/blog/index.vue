@@ -1,16 +1,7 @@
 <template>
   <main class="p-20">
     <section>
-      <div
-        class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]"
-      >
-        Articles
-      </div>
-      <!-- <ul class="flex flex-wrap justify-between">
-        <template v-for="c in contents" :key="c">
-          <BlogCardList :content="c" v-if="contents_show" />
-        </template>
-      </ul> -->
+      <PartsTitle :title="'Articles'" />
       <BlogCardList :contents="contents" :contents_show="contents_show" />
     </section>
     <section class="text-center mt-10">
