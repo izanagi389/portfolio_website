@@ -100,12 +100,12 @@ contents.forEach((content: any) => {
   content.viewHtml = removetags(content.html);
 });
 
-const test = useTemplateRef("content")
+const content_template = useTemplateRef("content")
 let topic: any[] = []
 onMounted(() => {
-  if (test.value) {
-    test.value.focus()
-    let list = test.value.querySelectorAll("h1, h2, h3, h4, h5")
+  if (content_template.value) {
+    content_template.value.focus()
+    let list = content_template.value.querySelectorAll("h1, h2, h3, h4, h5")
 
     let i3 = 0
     let i4 = 0
@@ -132,7 +132,6 @@ onMounted(() => {
         topic[topic.length - 1].children[i3 - 1].children[i4 - 1].children.push(t)
       }
     })
-    console.log(topic)
   }
 })
 </script>
