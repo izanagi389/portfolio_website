@@ -1,12 +1,15 @@
 <template>
   <main class="pt-20">
     <section>
+      <div class="hover:opacity-50 pl-5 ml-5">
+            <i class="fa-solid fa-arrow-left-long mr-5"></i>
+            <a href="/blog/">Articles</a>
+          </div>
       <div class="w-full text-center text-3xl pb-3 text-white drop-shadow-[0_0px_3px_rgba(0,0,0,1)]">
         {{ title }}
       </div>
-
       <div class="flex flex-row p-5">
-        <section ref="content" class="p-5 m-5 bg-white w-3/4">
+        <section ref="content" class="p-5 m-5 bg-white w-2/3 min-w-80">
           <template v-for="c in contents" :key="c.id">
             <div class="leading-[4rem]" v-html="c.content"></div>
             <Shiki v-if="c.viewHtml !== '' && c.html.includes('blockquote') == false" :code="c.viewHtml" :theme="theme"
@@ -15,8 +18,15 @@
           </template>
         </section>
 
-        <aside class="p-5 m-5 w-1/4 bg-black text-white">
-          <BlogTopic :topic="topic" />
+        <aside class="w-1/3">
+          <div class="fixed m-5 bg-white border-2 border-sky-500 min-w-56 max-w-72 overflow-y-auto h-1/2">
+            <div class="text-center text-white bg-sky-500">
+              <i class="fa-solid fa-list"><span class="ml-2">目次</span></i>
+            </div>
+            <div class="p-5">
+              <BlogTopic :topic="topic" />
+            </div>
+          </div>
         </aside>
       </div>
     </section>
@@ -136,5 +146,42 @@ onMounted(() => {
 
 img {
   border: 1px solid black;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 25px;
+  padding: 30px 0 10px 0;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 22px;
+  padding: 20px 0 5px 0;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 0 5px 0;
+}
+
+h5 {
+  font-weight: bold;
+  font-size: 818px;
+  padding: 10px 0 5px 0;
+}
+
+/* 目次クリック時にヘッダーと被らないように調整 */
+h2:before,
+h3:before,
+h4:before,
+h5:before,
+h6:before {
+  content: "";
+  display: block;
+  height: 100px;
+  margin-top: -70px;
+  visibility: hidden;
 }
 </style>

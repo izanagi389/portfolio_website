@@ -1,7 +1,7 @@
 <template>
-  <ul v-if="contents_show">
+  <ul v-if="contents_show" class="pl-2 list-[upper-roman] list-inside">
     <template v-for="t in topic">
-      <li>
+      <li class="mb-2">
         <a :href="`#${t.id}`">{{ t.text }}</a>
       </li>
       <BlogTopic v-if="cildrenChecker(t.children)" :topic="t.children" />
@@ -45,7 +45,5 @@ const cildrenChecker = (cildren: any) => {
   }
 
 }
-
-
-
 </script>
+
