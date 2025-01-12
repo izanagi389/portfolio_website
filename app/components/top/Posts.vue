@@ -4,13 +4,17 @@
     <div class="w-full self-center">
       <ul class="pr-10 pl-10 pt-10">
         <li v-for="c in Props.contents" class="mb-2 hover:scale-105 ease-in duration-300">
-          <a :href ="`/blog/post/${c.id}`" class="flex justify-center flex-wrap">
+          <a :href="`/blog/post/${c.id}`" class="flex justify-center flex-wrap">
             <img :src="c.thumbnail.url" alt="" class="h-36 w-36 object-cover bg-white" />
             <div class="w-3/4 bg-white pl-3 pt-3">{{ c.title }}</div>
-            </a>
+          </a>
         </li>
       </ul>
+      <div class="block pr-10 pl-10 text-right text-white">
+        <a class="rounded bg-white text-sky-500" href="/blog/">全ての記事を見る</a>
+      </div>
     </div>
+
   </section>
 </template>
 
@@ -34,7 +38,6 @@ const Props = withDefaults(defineProps<Props>(), {
 </script>
 
 <style>
-
 img::after {
   color: #fff;
   content: "Read More";
@@ -47,5 +50,4 @@ img::after {
   bottom: 0;
   right: 0;
 }
-
 </style>
