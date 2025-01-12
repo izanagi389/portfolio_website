@@ -14,11 +14,14 @@
 
 <script setup lamg="ts">
 
+const runtimeConfig = useRuntimeConfig();
+const site_name = runtimeConfig.public.site_title;
+
 // 参考 https://xs832297.xsrv.jp/blog-privacy-policy/#s1
 const privacy = [
     {
         title: "",
-        content: "Izanagi's-portfolio-site（以下、「当サイト」とします。）は、訪問者のプライバシーを尊重し、個人情報の保護に努めています。本プライバシーポリシーは、当サイトがどのように情報を収集、使用、管理するかを説明しています。"
+        content: site_name + "（以下、「当サイト」とします。）は、訪問者のプライバシーを尊重し、個人情報の保護に努めています。本プライバシーポリシーは、当サイトがどのように情報を収集、使用、管理するかを説明しています。"
     },
     {
         title: "個人情報の収集と利用",
