@@ -1,10 +1,7 @@
 <template>
   <main id="post" class="pt-20">
     <section>
-      <div class="hover:opacity-50 pl-5 ml-5">
-        <i class="fa-solid fa-arrow-left-long mr-5"></i>
-        <a href="/blog/">Articles</a>
-      </div>
+      <BlogBreadcrumb :breadcrumb="[title]" />
       <PartsTitle :title="title" />
       <div class="flex flex-row p-5">
         <section ref="content" class="p-5 m-5 bg-white w-2/3 min-w-80">
