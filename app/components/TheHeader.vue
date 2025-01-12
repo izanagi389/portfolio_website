@@ -64,14 +64,14 @@
           </transition>
         </Popover>
 
-        <a href="/app" class="text-sm font-semibold leading-6 text-gray-900">App</a>
+        <!-- <a href="/app" class="text-sm font-semibold leading-6 text-gray-900">App</a> -->
 
         <a href="/privacy" class="text-sm font-semibold leading-6 text-gray-900"
           >Privacy Policy</a
         >
-        <a href="/contact" class="text-sm font-semibold leading-6 text-gray-900"
+        <!-- <a href="/contact" class="text-sm font-semibold leading-6 text-gray-900"
           >Contact</a
-        >
+        > -->
       </PopoverGroup>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end"></div>
     </nav>
@@ -119,21 +119,21 @@
                   >
                 </DisclosurePanel>
               </Disclosure>
-              <a
+              <!-- <a
                 href="app"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Apps</a
-              >
+              > -->
               <a
                 href="/privacy"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Privacy</a
               >
-              <a
+              <!-- <a
                 href="contact"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >Contact</a
-              >
+              > -->
             </div>
           </div>
         </div>
