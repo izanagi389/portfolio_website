@@ -1,12 +1,12 @@
 <template>
-  <main class="max-w-7xl pt-14 ml-auto mr-auto">
+  <main class="max-w-7xl pt-14 ml-auto mr-auto overflow-auto">
     <div id="c-title-box">
       <div id="c-top-title" v-html="split_str"></div>
     </div>
     <TopWorks />
     <TopProfile />
     <TopPosts :contents="data.contents" />
-    <TopTags />
+    <!-- <TopTags /> -->
     
   </main>
 </template>
