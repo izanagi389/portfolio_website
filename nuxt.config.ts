@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', "nuxt-shiki"],
+  modules: ['@nuxtjs/tailwindcss', "nuxt-shiki", "@pinia/nuxt"],
   tailwindcss: {
     exposeConfig: true,
     viewer: true,
