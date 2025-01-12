@@ -1,7 +1,7 @@
 main {
     overflow: auto;
     /* scroll-snap-type: y; */
-    height: 100vh;
+    /* height: 100vh; */
 
 }
 
