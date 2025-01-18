@@ -1,17 +1,19 @@
 <template>
-  <section class="pb-32">
+  <section class="pt-4 pr-4 pb-32 pl-4">
     <PartsTitle :title="'Develop Blog'" />
     <div class="w-full self-center">
       <ul class="pr-10 pl-10 pt-10">
         <li v-for="c in Props.contents" class="mb-2 hover:scale-105 ease-in duration-300">
           <a :href="`/blog/post/${c.id}`" class="flex justify-center flex-wrap">
-            <img :src="c.thumbnail.url" alt="" class="h-36 w-36 object-cover bg-white" />
-            <div class="w-3/4 bg-white pl-3 pt-3">{{ c.title }}</div>
+            <img :src="c.thumbnail.url" alt="" class="h-36 md:w-36 w-full object-cover bg-white" />
+            <div class="md:w-3/4 w-full bg-white pl-3 pt-3">{{ c.title }}</div>
           </a>
         </li>
       </ul>
       <div class="block pr-10 pl-10 text-right text-white">
-        <a class="rounded bg-white text-sky-500" href="/blog/">全ての記事を見る</a>
+        <section class="text-center mt-10">
+          <PartsRoundButton :more_btn_show="true" :text="'全ての記事を見る'" @click-method="jumpPage" />
+        </section>
       </div>
     </div>
 
@@ -35,6 +37,10 @@ const Props = withDefaults(defineProps<Props>(), {
     required: true,
   },
 });
+
+const jumpPage = async () => {
+  await navigateTo('/blog/')
+}
 </script>
 
 <style>

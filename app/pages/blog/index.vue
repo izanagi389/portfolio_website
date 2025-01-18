@@ -1,11 +1,11 @@
 <template>
   <main class="p-20">
     <section>
-      <PartsTitle :title="'Articles'" />
+      <PartsTitle :title="'Develop Blog'" />
       <BlogCardList :contents="contents" :contents_show="contents_show" />
     </section>
     <section class="text-center mt-10">
-      <BlogMoreBtn :more_btn_show="more_btn_show" @more-contents="moreContents" />
+      <PartsRoundButton :more_btn_show="more_btn_show" :text="'More'" @click-method="moreContents" />
     </section>
   </main>
 </template>
