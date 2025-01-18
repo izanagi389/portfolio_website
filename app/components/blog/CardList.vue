@@ -15,7 +15,7 @@
           <div class="truncate font-semibold">{{ content.title }}</div>
           <div class="h-10 flex flex-col text-end">
             <time class="mt-auto" :datetime="content.createdAt">{{
-              dateFommter(content.updatedAt)
+              dateFommter(content.createdAt)
             }}</time>
           </div>
         </a>
@@ -34,6 +34,6 @@ const props = defineProps<Props>();
 
 const dateFommter = (date: string) => {
   const date_object = new Date(date);
-  return `${date_object.getFullYear()}年${date_object.getMonth()}月${date_object.getDate()}日`;
+  return `${date_object.getFullYear()}年${date_object.getMonth() + 1}月${date_object.getDate()}日`;
 };
 </script>

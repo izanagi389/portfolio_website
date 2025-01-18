@@ -29,4 +29,5 @@ let split_str = split_list.join("");
 let { data } = await useAsyncData("mountains", () =>
   $fetch(`/api/microcms?limit=3`)
 );
+
 </script>

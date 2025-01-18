@@ -9,6 +9,7 @@ export default defineEventHandler(async (event) => {
 
   const limit = query.limit != undefined ? query.limit : 10;
   const offset = query.offset != undefined ? query.offset : 0;
+  const filters = query.filters != undefined ? query.filters : "";
 
   const post_id = query.post_id;
 
@@ -27,7 +28,8 @@ export default defineEventHandler(async (event) => {
       },
       params: {
         "limit": limit,
-        "offset": offset
+        "offset": offset,
+        "filters": filters
       }
     })
   }
