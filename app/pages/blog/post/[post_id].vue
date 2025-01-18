@@ -4,7 +4,7 @@
       <BlogBreadcrumb :breadcrumb="[title]" />
       <PartsTitle :title="title" />
       <div class="flex flex-row p-5">
-        <section ref="content" class="p-5 m-5 bg-white w-2/3 min-w-80">
+        <section ref="content" class="p-5 m-5 bg-white md:w-2/3 w-full min-w-80">
           <template v-for="c in contents" :key="c.id">
             <div class="leading-[4rem]" v-html="c.content"></div>
             <Shiki v-if="c.viewHtml !== '' && c.html.includes('blockquote') == false" :code="c.viewHtml" :theme="theme"
@@ -13,7 +13,7 @@
           </template>
         </section>
 
-        <aside class="w-1/3">
+        <aside class="md:w-1/3 md:block hidden">
           <div class="fixed m-5 bg-white border-2 border-sky-500 min-w-56 max-w-72 overflow-y-auto h-1/2">
             <div class="text-center text-white bg-sky-500">
               <i class="fa-solid fa-list"><span class="ml-2">目次</span></i>
