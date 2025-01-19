@@ -1,5 +1,5 @@
 #c-bg-image {
-    background: url(/_nuxt/assets/img/bg_image.png) no-repeat center center fixed;
+    background: url(/img/bg_image.png) no-repeat center center fixed;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;

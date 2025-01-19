@@ -7,7 +7,7 @@
         class="text-center w-4/5 ml-auto mr-auto border-solid border-2 border-sky-500 bg-white p-4"
       >
         <img
-          src="@/assets/img/profile_image.png"
+          src="/img/profile_image.png"
           class="rounded-full w-36 ml-auto mr-auto mb-4"
           alt=""
         />

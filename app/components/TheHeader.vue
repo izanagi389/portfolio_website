@@ -83,7 +83,7 @@
         <div class="flex items-center justify-between">
           <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
-            <!-- <img class="h-12 w-auto" src="/public/logo.png" alt="" /> -->
+            <img class="h-12 w-auto" src="/img/logo.png" alt="" />
           </a>
           <button
             type="button"

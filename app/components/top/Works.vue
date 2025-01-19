@@ -25,12 +25,12 @@ const works = [
   {
     name: "Develop blog",
     url: "/blog",
-    img:"../../_nuxt/assets/img/profile_image.png",
+    img:"/img/profile_image.png",
   },
   {
     name: "Japanese MIddle Name",
     url: "/app/middle_name/",
-    img: "../../_nuxt/assets/img/profile_image.png",
+    img: "/img/profile_image.png",
   },
 ];
 </script>
