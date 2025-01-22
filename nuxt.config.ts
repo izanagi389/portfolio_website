@@ -68,7 +68,7 @@ export default defineNuxtConfig({
     },
   },
   build: {
-    transpile: ['lodash-es']
+    transpile: ['lodash-es', 'shiki']
   },
   nitro: {
     esbuild: {
