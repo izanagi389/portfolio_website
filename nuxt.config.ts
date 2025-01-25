@@ -87,13 +87,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    // Homepage pre-rendered at build time
     '/privacy': { prerender: true },
-    // Blog posts page generated on demand, revalidates in background, cached on CDN for 1 hour (3600 seconds)
-    '/blog/category/**': { isr: 3600 },
-    '/blog/tags/**': { isr: 3600 },
-    // Blog post page generated on demand once until next deployment, cached on CDN
-    '/blog/post/**': { prerender: true  },
-    // Admin dashboard renders only on client-side
+    '/blog/**': { prerender: true },
   }
 })
