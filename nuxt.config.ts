@@ -88,11 +88,11 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/privacy': { prerender: true },
-    '/blog/**':  { prerender: true },
-    '/blog/category/**':  { prerender: true },
-    '/blog/tags/**':  { prerender: true },
+    '/blog/**': { isr: 3600 },
+    '/blog/category/**': { isr: 3600 },
+    '/blog/tags/**': { isr: 3600 },
     // Blog post page generated on demand once until next deployment, cached on CDN
-    '/blog/post/**': { prerender: true },
+    '/blog/post/**': { isr: true  },
     // Admin dashboard renders only on client-side
   }
 })
