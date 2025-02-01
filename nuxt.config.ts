@@ -1,14 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss',"@pinia/nuxt"],
+  modules: ["@pinia/nuxt"],
   tailwindcss: {
     exposeConfig: true,
     viewer: true,
-    // and more...
   },
   compatibilityDate: '2024-07-06',
   css: ['assets/css/main.css'],
@@ -66,6 +67,9 @@ export default defineNuxtConfig({
     build: {
       target: ['es2022', 'edge89', 'firefox89', 'chrome89', 'safari15']
     },
+    plugins: [
+      tailwindcss(),
+    ],
   },
   build: {
     transpile: ['lodash-es', 'shiki']

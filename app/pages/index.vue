@@ -31,3 +31,6 @@ let { data } = await useAsyncData("mountains", () =>
 );
 
 </script>
+<style>
+@import url(~/assets/css/top.css);
+</style>
