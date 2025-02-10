@@ -4,6 +4,7 @@
     <NuxtWelcome /> -->
     <TheHeader />
     <NuxtPage />
+    <PartsPageTopButton />
     <TheFooter />
   </div>
 </template>
