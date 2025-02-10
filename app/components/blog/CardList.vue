@@ -2,7 +2,7 @@
   <ul class="flex flex-wrap md:justify-between justify-center">
     <template v-for="content, index in contents">
       <li
-        class="bg-white lg:w-1/4 md:w-2/5 w-80 m-2 p-3 rounded-md hover:scale-105 duration-300"
+        class="bg-white lg:w-1/4 md:w-2/5 w-80 m-2 p-3 rounded-md hover:scale-105 duration-300 min-w-[320px]"
         v-if="contents_show"
         :key="'contents-' + index"
       >

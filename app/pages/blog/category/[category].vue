@@ -4,7 +4,7 @@
             <PartsTitle :title="'Develop Blog'" />
             <BlogCardList :contents="contents" :contents_show="contents_show" />
         </section>
-        <section v-if="contents_show" class="text-center mt-10">
+        <section v-if="contents_show" class="flex justify-center text-center mt-10">
             <PartsRoundButton :more_btn_show="more_btn_show" :text="'More'" @click-method="moreContents"
                 :loading="loading" />
         </section>
