@@ -3,15 +3,11 @@
     <section>
       <BlogBreadcrumb :breadcrumb="[title]" />
       <PartsTitle :title="title" />
-      <div class="flex flex-row p-5">
+      <div class="flex flex-row md:p-5 p-0 ">
         <section ref="content" class="p-5 m-5 bg-white md:w-2/3 w-full min-w-80">
           <template v-for="c in contents" :key="c.id">
             <div class="leading-[4rem]" v-html="c.content"></div>
-            <!-- <Shiki v-if="c.viewHtml !== '' && c.html.includes('blockquote') == false" :code="c.viewHtml" :theme="theme"
-              :lang="c.lang" /> -->
-            <!-- <div v-else v-html="c.viewHtml" /> -->
             <div v-html="c.html" />
-
           </template>
         </section>
 
