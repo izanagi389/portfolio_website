@@ -1,5 +1,5 @@
 <template>
-    <main class="max-w-7xl pt-14 ml-auto mr-auto">
+    <main id="privacy" class="max-w-7xl pt-14 ml-auto mr-auto">
         <section>
             <PartsTitle :title="'Privacy Policy'" />
             <div class="bg-white p-10 m-10">
@@ -13,6 +13,10 @@
 </template>
 
 <script setup lamg="ts">
+
+useHead({
+    title: "privacy policy",
+});
 
 const runtimeConfig = useRuntimeConfig();
 const site_name = runtimeConfig.public.site_title;
@@ -47,12 +51,17 @@ const privacy = [
 </script>
 
 <style>
-h2 {
+#privacy h2 {
     font-weight: bold;
     font-size: 25px;
     padding: 30px 0 10px 0;
 }
-a[href]:hover {
-  color:cornflowerblue;
+
+#privacy a[href] {
+    color: cornflowerblue;
+}
+
+#privacy a[href]:hover {
+    opacity: 0.7;
 }
 </style>

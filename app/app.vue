@@ -16,7 +16,7 @@ const title = runtimeConfig.public.site_title;
 useHead({
   titleTemplate: (productCategory) => {
     return productCategory
-      ? `${productCategory} - ${title}`
+      ? `${productCategory} | ${title}`
       : title
   }
   

@@ -10,5 +10,10 @@
 </template>
 
 <script setup lamg="ts">
+
+useHead({
+    title: "contact",
+});
+
 </script>
 

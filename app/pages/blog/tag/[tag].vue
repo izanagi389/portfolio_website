@@ -4,19 +4,21 @@
             <PartsTitle :title="'Develop Blog'" />
             <BlogCardList :contents="contents" :contents_show="contents_show" />
         </section>
-        <section class="text-center mt-10">
-            <PartsRoundButton :more_btn_show="more_btn_show" :text="'More'" @click-method="moreContents" />
+        <section v-if="contents_show" class="text-center mt-10">
+            <PartsRoundButton :more_btn_show="more_btn_show" :text="'More'" @click-method="moreContents"
+                :loading="loading" />
         </section>
     </main>
 </template>
 
 <script setup>
-useHead({
-    title: "記事一覧",
-});
-
 const route = useRoute()
+const title =  "Develop Blog";
 const tag = route.params.tag
+
+useHead({
+    title: title + " | " +  tag,
+});
 const filters = "tags[contains]" + tag
 // 記事取得時のパラメータを設定
 let offset = 9, limit = 9;
@@ -30,11 +32,15 @@ let contents = data.value.contents, totalCount = data.value.totalCount;
 // moreボタンの表示・非表示
 let more_btn_show = ref(true);
 
+let loading = ref(false)
 const moreContents = async () => {
+    loading.value = !loading.value;
+    toggleComponent();
     data = await useAsyncData("contents", () =>
         $fetch(`/api/microcms?offset=${offset}&limit=${limit}&filters=${filters}`)
     );
     contents = contents.concat(data.data.value.contents);
+    loading.value = !loading.value;
     toggleComponent();
 
     if (totalCount > offset) {
