@@ -1,7 +1,5 @@
-#post .shiki {
-  display: block;
-  padding: 10px 20px;
-  overflow: auto;
+#post {
+  word-wrap: break-word;
 }
 
 #post img {
@@ -81,4 +79,8 @@
   text-align: right;
   color: #888888;
   font-size: 0.3em;
+}
+
+#post a[href]:hover {
+  color:cornflowerblue;
 }

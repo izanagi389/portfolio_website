@@ -16,7 +16,7 @@
         </section>
 
         <aside class="md:w-1/3 md:block hidden">
-          <div class="fixed m-5 bg-white border-2 border-sky-500 min-w-56 max-w-72 overflow-y-auto h-1/2">
+          <div class="sticky top-[120px] max-h-[500px] m-5 bg-white border-2 border-sky-500 min-w-56 max-w-72 overflow-y-auto">
             <div class="text-center text-white bg-sky-500">
               <i class="fa-solid fa-list"><span class="ml-2">目次</span></i>
             </div>

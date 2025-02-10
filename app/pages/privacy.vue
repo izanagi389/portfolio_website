@@ -5,7 +5,7 @@
             <div class="bg-white p-10 m-10">
                 <template v-for="p in privacy">
                     <h2 v-if="p.title.length > 0">{{ p.title }}</h2>
-                    <div v-if="p.content.length > 0">{{ p.content }}</div>
+                    <div v-if="p.content.length > 0" v-html="p.content"></div>
                 </template>
             </div>
         </section>
@@ -33,7 +33,7 @@ const privacy = [
     },
     {
         title: "アクセス解析ツールについて",
-        content: "当サイトでは、Googleアナリティクスを使用して、サイトの利用状況を分析しています。Googleアナリティクスもクッキーを使用してデータを収集しますが、個人を特定する情報は含まれません。なお、この規約に関しては、「<a href='https://marketingplatform.google.com/about/analytics/terms/jp/''>Googleアナリティクス利用規約</a>」または「<a href='https://policies.google.com/technologies/partner-sites'>Googleポリシーと規約」をご覧ください。</a>"
+        content: "当サイトでは、Googleアナリティクスを使用して、サイトの利用状況を分析しています。Googleアナリティクスもクッキーを使用してデータを収集しますが、個人を特定する情報は含まれません。なお、この規約に関しては、「<a href='https://marketingplatform.google.com/about/analytics/terms/jp/''>Googleアナリティクス利用規約</a>」または<a href='https://policies.google.com/technologies/partner-sites'>「Googleポリシーと規約」</a>をご覧ください。"
     },
     {
         title: "情報の共有と開示",
@@ -51,5 +51,8 @@ h2 {
     font-weight: bold;
     font-size: 25px;
     padding: 30px 0 10px 0;
+}
+a[href]:hover {
+  color:cornflowerblue;
 }
 </style>
