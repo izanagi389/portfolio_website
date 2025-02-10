@@ -4,8 +4,8 @@
       <PartsTitle :title="'Develop Blog'" />
       <BlogCardList :contents="contents" :contents_show="contents_show" />
     </section>
-    <section class="text-center mt-10">
-      <PartsRoundButton :more_btn_show="more_btn_show" :text="'More'" @click-method="moreContents" />
+    <section v-if="contents_show" class="text-center mt-10">
+      <PartsRoundButton :more_btn_show="more_btn_show" :text="'More'" @click-method="moreContents" :loading="loading" />
     </section>
   </main>
 </template>
@@ -19,7 +19,7 @@ useHead({
 let offset = 9, limit = 9;
 
 // 初期表示の記事データを取得
-let { data } = await useAsyncData("mountains", () =>
+let { data, status } = await useAsyncData("mountains", () =>
   $fetch(`/api/microcms?limit=${limit}`)
 );
 let contents = data.value.contents, totalCount = data.value.totalCount;
@@ -27,13 +27,26 @@ let contents = data.value.contents, totalCount = data.value.totalCount;
 // moreボタンの表示・非表示
 let more_btn_show = ref(true);
 
+let loading = ref(false)
+
+function sleep(waitMsec) {
+  var startMsec = new Date();
+
+  // 指定ミリ秒間だけループさせる
+  while (new Date() - startMsec < waitMsec);
+}
+
 const moreContents = async () => {
+  loading.value = !loading.value;
+  toggleComponent();
+
   data = await useAsyncData("contents", () =>
     $fetch(`/api/microcms?offset=${offset}&limit=${limit}`)
   );
+  loading.value = !loading.value;
   contents = contents.concat(data.data.value.contents);
   toggleComponent();
-
+  
   if (totalCount > offset) {
     offset += 9;
   }
@@ -49,4 +62,5 @@ const toggleComponent = () => {
   nextTick();
   contents_show.value = true;
 };
+
 </script>

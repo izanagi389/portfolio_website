@@ -27,10 +27,10 @@ const works = [
     url: "/blog",
     img:"/img/profile_image.png",
   },
-  {
-    name: "Japanese MIddle Name",
-    url: "/app/middle_name/",
-    img: "/img/profile_image.png",
-  },
+  // {
+  //   name: "Japanese MIddle Name",
+  //   url: "/app/middle_name/",
+  //   img: "/img/profile_image.png",
+  // },
 ];
 </script>

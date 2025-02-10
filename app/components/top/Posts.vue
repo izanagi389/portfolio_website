@@ -12,7 +12,7 @@
       </ul>
       <div class="block pr-10 pl-10 text-right text-white">
         <section class="text-center mt-10">
-          <PartsRoundButton :more_btn_show="true" :text="'全ての記事を見る'" @click-method="jumpPage" />
+          <PartsRoundButton :more_btn_show="true" :text="'全ての記事を見る'" @click-method="jumpPage" :loading="false" />
         </section>
       </div>
     </div>
