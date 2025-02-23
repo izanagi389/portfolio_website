@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', 'nuxt-security'],
+  modules: ['@pinia/nuxt', 'nuxt-security', 'nuxt-gtag'],
   tailwindcss: {
     exposeConfig: true,
     viewer: true
@@ -175,5 +175,9 @@ export default defineNuxtConfig({
       exportToPresets: true
     },
     sri: true
+  },
+
+  gtag: {
+    id: process.env?.GTAG_ID,
   }
 })
