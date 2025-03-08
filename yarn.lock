@@ -778,7 +778,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/devtools-kit@npm:2.2.1":
+"@nuxt/devtools-kit@npm:2.2.1, @nuxt/devtools-kit@npm:^2.2.1":
   version: 2.2.1
   resolution: "@nuxt/devtools-kit@npm:2.2.1"
   dependencies:
@@ -974,6 +974,27 @@ __metadata:
     std-env: "npm:^3.8.1"
     ufo: "npm:^1.5.4"
   checksum: 10c0/93a8b1d5972d9d99c88b61db369a943799bf5da66bfb94220276534e4421e91a5860edb8cc57ef008e8b45dd16f31ae10ec02d1baa0fd80c5db58c5e2734970e
+  languageName: node
+  linkType: hard
+
+"@nuxtjs/sitemap@npm:7.2.7":
+  version: 7.2.7
+  resolution: "@nuxtjs/sitemap@npm:7.2.7"
+  dependencies:
+    "@nuxt/devtools-kit": "npm:^2.2.1"
+    "@nuxt/kit": "npm:^3.16.0"
+    chalk: "npm:^5.4.1"
+    defu: "npm:^6.1.4"
+    h3-compression: "npm:^0.3.2"
+    nuxt-site-config: "npm:^3.1.4"
+    ofetch: "npm:^1.4.1"
+    pathe: "npm:^2.0.3"
+    pkg-types: "npm:^2.1.0"
+    radix3: "npm:^1.1.2"
+    semver: "npm:^7.7.1"
+    sirv: "npm:^3.0.1"
+    ufo: "npm:^1.5.4"
+  checksum: 10c0/81a8835eb10eed5efb795eb94d9c80d6f3a258090f9682961661ff22f4011f2aedb439c5a5fff76bfa1fa4f9926d3b09f0cde95dc520b6c4fb90064ddd717464
   languageName: node
   linkType: hard
 
@@ -2505,6 +2526,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "chalk@npm:5.4.1"
+  checksum: 10c0/b23e88132c702f4855ca6d25cb5538b1114343e41472d5263ee8a37cccfccd9c4216d111e1097c6a27830407a1dc81fecdf2a56f2c63033d4dbbd88c10b0dcef
+  languageName: node
+  linkType: hard
+
 "change-case@npm:^5.4.4":
   version: 5.4.4
   resolution: "change-case@npm:5.4.4"
@@ -3724,6 +3752,15 @@ __metadata:
   dependencies:
     duplexer: "npm:^0.1.2"
   checksum: 10c0/0bf63084d5fea0880f3607ecd361d4663aab26b9cb0d3e97ba77373a0246c8f8de57d8613ac4e57e1e6c28522dcee6f8682aae55c275b9262b66d2ffd698f72b
+  languageName: node
+  linkType: hard
+
+"h3-compression@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "h3-compression@npm:0.3.2"
+  peerDependencies:
+    h3: ^1.6.0
+  checksum: 10c0/ad36daaca1d86ca1b7d6faf6b04069e2562197917880c6eff47636a12746c56a0f1578a73ce185f7a9f5fbbd6ae48f360c80f2491694116e04f7f28add5711ce
   languageName: node
   linkType: hard
 
@@ -5029,6 +5066,7 @@ __metadata:
     "@headlessui/vue": "npm:^1.7.23"
     "@heroicons/vue": "npm:^2.2.0"
     "@nuxtjs/robots": "npm:5.2.6"
+    "@nuxtjs/sitemap": "npm:7.2.7"
     "@pinia/nuxt": "npm:^0.10.1"
     "@tailwindcss/postcss": "npm:^4.0.12"
     "@tailwindcss/vite": "npm:^4.0.12"

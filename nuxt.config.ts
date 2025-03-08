@@ -6,7 +6,13 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', 'nuxt-security', 'nuxt-gtag', '@nuxtjs/robots'],
+  modules: [
+    '@pinia/nuxt',
+    'nuxt-security',
+    'nuxt-gtag',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap'
+  ],
   tailwindcss: {
     exposeConfig: true,
     viewer: true
@@ -90,7 +96,7 @@ export default defineNuxtConfig({
     '/blog/tags/**': { isr: 3600 },
     '/blog/post/**': { isr: true }
   },
-  
+
   security: {
     strict: false,
     headers: {
@@ -102,7 +108,7 @@ export default defineNuxtConfig({
         'font-src': ["'self'", 'https:', 'data:'],
         'form-action': ["'self'"],
         'frame-ancestors': ["'self'"],
-        'img-src': ["'self'", 'data:', "images.microcms-assets.io"],
+        'img-src': ["'self'", 'data:', 'images.microcms-assets.io'],
         'object-src': ["'none'"],
         'script-src-attr': ["'none'"],
         'style-src': ["'self'", 'https:', "'unsafe-inline'"],
@@ -130,7 +136,7 @@ export default defineNuxtConfig({
       permissionsPolicy: {
         camera: false,
         autoplay: false,
-        geolocation: false,
+        geolocation: false
       }
     },
     requestSizeLimiter: {
@@ -178,14 +184,15 @@ export default defineNuxtConfig({
   },
 
   gtag: {
-    id: process.env?.GTAG_ID,
+    id: process.env?.GTAG_ID
   },
 
   site: {
-    indexable: true
+    indexable: true,
+    name: `${process.env?.SITE_NAME}`
   },
   
   robots: {
-    disallow: ['/blog/$', '/privacy', '/api/'],
+    disallow: ['/blog/$', '/privacy', '/api/']
   }
 })
