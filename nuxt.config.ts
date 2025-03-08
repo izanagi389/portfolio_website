@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', 'nuxt-security', 'nuxt-gtag'],
+  modules: ['@pinia/nuxt', 'nuxt-security', 'nuxt-gtag', '@nuxtjs/robots'],
   tailwindcss: {
     exposeConfig: true,
     viewer: true
@@ -179,5 +179,13 @@ export default defineNuxtConfig({
 
   gtag: {
     id: process.env?.GTAG_ID,
+  },
+
+  site: {
+    indexable: true
+  },
+  
+  robots: {
+    disallow: ['/blog/$', '/privacy', '/api/'],
   }
 })
