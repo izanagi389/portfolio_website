@@ -4,7 +4,7 @@
     <div class="w-full self-center">
       <ul class="pr-10 pl-10 pt-10">
         <li v-for="c in Props.contents" class="mb-2 hover:scale-105 ease-in duration-300">
-          <a :href="`/blog/post/${c.id}`" class="flex justify-center flex-wrap">
+          <a :href="`/blog/articles/${c.id}`" class="flex justify-center flex-wrap">
             <img :src="c.thumbnail.url" alt="" class="h-36 md:w-36 w-full object-cover bg-white" />
             <div class="md:w-3/4 w-full bg-white pl-3 pt-3">{{ c.title }}</div>
           </a>

@@ -6,7 +6,7 @@
         v-if="contents_show"
         :key="'contents-' + index"
       >
-        <a :href="'/blog/post/' + content.id" class="">
+        <a :href="'/blog/articles/' + content.id" class="">
           <img
             :src="content.thumbnail.url"
             alt=""

@@ -2,7 +2,7 @@
   <main id="post" class="pt-20">
     <section>
       <BlogBreadcrumb :breadcrumb="[title]" />
-      <PartsTitle :title="title" />
+      <PartsTitle class="md:p-5" :title="title" />
       <div class="flex flex-row md:p-5 p-0 ">
         <section ref="content" class="p-5 m-5 bg-white md:w-2/3 w-full min-w-80">
           <template v-for="c in contents" :key="c.id">
