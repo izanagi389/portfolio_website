@@ -1,8 +1,3 @@
-// export type Article = {
-//     id: string,
-//     title: string,
-//     article: string,
-// }
 export default defineEventHandler(async (event) => {
 
   const query = getQuery(event)
