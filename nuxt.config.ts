@@ -94,7 +94,7 @@ export default defineNuxtConfig({
     '/blog/**': { isr: 3600 },
     '/blog/category/**': { isr: 3600 },
     '/blog/tags/**': { isr: 3600 },
-    '/blog/articles/**': { isr: true },
+    '/blog/articles/**': { isr: true }
   },
 
   security: {
@@ -194,5 +194,11 @@ export default defineNuxtConfig({
 
   robots: {
     disallow: ['/blog/$', '/privacy', '/api/']
+  },
+
+  sitemap: {
+      sources: [
+        '/api/__sitemap__/urls',
+      ]
   }
 })
