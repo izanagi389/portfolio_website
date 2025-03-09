@@ -193,12 +193,12 @@ export default defineNuxtConfig({
   },
 
   robots: {
-    disallow: ['/blog/$', '/privacy', '/api/']
+    disallow: ['/blog/$', '/privacy', '/api/', '/contact']
   },
 
   sitemap: {
       sources: [
         '/api/__sitemap__/urls',
-      ]
+      ],
   }
 })
