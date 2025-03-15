@@ -171,25 +171,25 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/vue/20/so
 const products = [
   {
     name: "All",
-    description: "Get a better understanding of your traffic",
+    description: "",
     href: "/blog/",
     icon: ChartPieIcon,
   },
   {
     name: "Programming",
-    description: "Get a better understanding of your traffic",
+    description: "",
     href: "/blog/category/programming/",
     icon: ChartPieIcon,
   },
   {
     name: "IT",
-    description: "Speak directly to your customers",
+    description: "",
     href: "/blog/category/it/",
     icon: CursorArrowRaysIcon,
   },
   {
     name: "Gadget",
-    description: "Your customers’ data will be safe and secure",
+    description: "",
     href: "/blog/category/gadget/",
     icon: FingerPrintIcon,
   },
