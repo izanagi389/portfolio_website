@@ -17,7 +17,8 @@
               <i class="fa-solid fa-list"><span class="ml-2">目次</span></i>
             </div>
             <div class="p-5 h-[475px] overflow-y-auto">
-              <BlogTopic :topic="topic" />
+              <BlogTopic v-if="topic.length > 0" :topic="topic" />
+              <div v-else class="text-gray-500 text-center">目次を生成中...</div>
             </div>
           </div>
         </aside>
@@ -50,9 +51,25 @@ const { generateTableOfContents } = useTableOfContents();
 onMounted(() => {
   if (content_template.value) {
     content_template.value.focus();
-    topic.value = generateTableOfContents(content_template.value);
+    // 少し遅延を入れてDOMが完全に構築されてから目次を生成
+    nextTick(() => {
+      if (content_template.value) {
+        topic.value = generateTableOfContents(content_template.value);
+      }
+    });
   }
   Prism.highlightAll();
+});
+
+// SSR時にも目次を生成するための処理
+watchEffect(() => {
+  if (content_template.value && contents.length > 0) {
+    nextTick(() => {
+      if (content_template.value) {
+        topic.value = generateTableOfContents(content_template.value);
+      }
+    });
+  }
 });
 </script>
 
