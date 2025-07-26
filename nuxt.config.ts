@@ -120,7 +120,6 @@ export default defineNuxtConfig({
           "'self'",
           'https:',
           "'unsafe-inline'",
-          "'strict-dynamic'",
           "'nonce-{{nonce}}'",
           'https://vercel.live'
         ],
