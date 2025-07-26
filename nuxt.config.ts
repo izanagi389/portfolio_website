@@ -121,7 +121,8 @@ export default defineNuxtConfig({
           'https:',
           "'unsafe-inline'",
           "'strict-dynamic'",
-          "'nonce-{{nonce}}'"
+          "'nonce-{{nonce}}'",
+          'https://vercel.live'
         ],
         'upgrade-insecure-requests': true
       },
