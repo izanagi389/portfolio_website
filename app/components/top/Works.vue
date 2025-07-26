@@ -21,16 +21,7 @@
 </template>
 
 <script setup lang="ts">
-const works = [
-  {
-    name: "Develop blog",
-    url: "/blog",
-    img:"/img/profile_image.png",
-  },
-  // {
-  //   name: "Japanese MIddle Name",
-  //   url: "/app/middle_name/",
-  //   img: "/img/profile_image.png",
-  // },
-];
+import { WORKS } from '~/constants';
+
+const works = WORKS;
 </script>

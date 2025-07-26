@@ -10,16 +10,12 @@
 </template>
 
 <script setup lang="ts">
+import { createTitleTemplate } from '~/utils';
 
 const runtimeConfig = useRuntimeConfig();
-
 const title = runtimeConfig.public.site_title;
+
 useHead({
-  titleTemplate: (productCategory) => {
-    return productCategory
-      ? `${productCategory} | ${title}`
-      : title
-  }
-  
-})
+  titleTemplate: createTitleTemplate(title)
+});
 </script>

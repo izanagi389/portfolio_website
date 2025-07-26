@@ -21,21 +21,14 @@
 </template>
 
 <script setup lang="ts">
-type Contents = {
-  id: string;
-  title: string;
-  thumbnail: Object;
-};
+import type { Content } from '~/types';
 
 interface Props {
-  contents: Contents;
+  contents: Content[];
 }
 
 const Props = withDefaults(defineProps<Props>(), {
-  contents: {
-    type: Object as () => Props,
-    required: true,
-  },
+  contents: () => [],
 });
 
 const jumpPage = async () => {

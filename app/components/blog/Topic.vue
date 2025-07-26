@@ -11,14 +11,10 @@
 
 <script setup lang="ts">
 
+import type { TopicItem } from '~/types';
+
 interface Props {
-  topic: {
-    id: String,
-    text: String,
-    tag: String,
-    children: Object,
-    default: () => []
-  };
+  topic: TopicItem[];
 }
 
 const props = defineProps<Props>();
@@ -36,14 +32,8 @@ onMounted(() => {
 })
 
 
-const cildrenChecker = (cildren: any) => {
-
-  if (cildren == undefined || cildren == null) {
-    return false
-  } else {
-    return Object.keys(cildren).length != 0;
-  }
-
-}
+const cildrenChecker = (children: TopicItem[]) => {
+  return children && children.length > 0;
+};
 </script>
 

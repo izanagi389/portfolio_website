@@ -27,57 +27,33 @@
 </template>
 
 <script setup lang="ts" local>
-import Prism from 'prismjs'
+import Prism from 'prismjs';
+import { useTableOfContents } from '~/composables/useTableOfContents';
+import type { BlogPost } from '~/types';
 
 const route = useRoute();
 const post_id = route.params.post_id;
 
 // 初期表示の記事データを取得
-let { data }: any = await useAsyncData("mountains", () =>
+const { data } = await useAsyncData<BlogPost>("mountains", () =>
   $fetch(`/api/microcms?post_id=${post_id}`)
 );
 
-
-const title = data.value.title;
-const contents = data.value.blogContent;
+const title = data.value?.title || '';
+const contents = data.value?.blogContent || [];
 
 // 目次作成
-const content_template = useTemplateRef("content")
-let topic: any[] = []
+const content_template = useTemplateRef("content");
+const topic = ref<any[]>([]);
+const { generateTableOfContents } = useTableOfContents();
+
 onMounted(() => {
   if (content_template.value) {
-    content_template.value.focus()
-    let list = content_template.value.querySelectorAll("h1, h2, h3, h4, h5")
-
-    let i3 = 0
-    let i4 = 0
-    list.forEach((l) => {
-      let t = {
-        id: l.id,
-        text: l.innerText,
-        tag: l.localName,
-        children: []
-      }
-
-      if (l.localName == "h2") {
-        topic.push(t)
-        i3 = 0
-        i4 = 0
-      } else if (l.localName == "h3" && topic.length !== 0) {
-        topic[topic.length - 1].children.push(t)
-        i3++
-        i4 = 0
-      } else if (l.localName == "h4" && i3 - 1 >= 0) {
-        topic[topic.length - 1].children[i3 - 1].children.push(t)
-        i4++
-      } else if (l.localName == "h5" && i3 - 1 >= 0 && i4 - 1 >= 0) {
-        topic[topic.length - 1].children[i3 - 1].children[i4 - 1].children.push(t)
-      }
-    })
+    content_template.value.focus();
+    topic.value = generateTableOfContents(content_template.value);
   }
-
-  Prism.highlightAll()
-})
+  Prism.highlightAll();
+});
 </script>
 
 <style>

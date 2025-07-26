@@ -168,31 +168,13 @@ import {
 
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/vue/20/solid";
 
-const products = [
-  {
-    name: "All",
-    description: "",
-    href: "/blog/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Programming",
-    description: "",
-    href: "/blog/category/programming/",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "IT",
-    description: "",
-    href: "/blog/category/it/",
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: "Gadget",
-    description: "",
-    href: "/blog/category/gadget/",
-    icon: FingerPrintIcon,
-  },
-];
+import { NAVIGATION_ITEMS } from '~/constants';
+
+const products = NAVIGATION_ITEMS.map(item => ({
+  ...item,
+  icon: item.icon === 'ChartPieIcon' ? ChartPieIcon :
+        item.icon === 'CursorArrowRaysIcon' ? CursorArrowRaysIcon :
+        item.icon === 'FingerPrintIcon' ? FingerPrintIcon : ChartPieIcon
+}));
 const mobileMenuOpen = ref(false);
 </script>

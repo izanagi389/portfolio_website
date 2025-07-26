@@ -5,18 +5,18 @@ https://github.com/hiloki/flocss
 
 @import "tailwindcss";
 
+/* Layout */
 header {
     z-index: 1;
 }
 
+/* Component */
 svg {
     pointer-events: none;
 }
 
 #c-bg-image {
     background: url(/img/bg_image.png) no-repeat center center fixed;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     background-size: cover;
 }
 

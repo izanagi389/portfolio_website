@@ -25,15 +25,15 @@
 </template>
 
 <script setup lang="ts">
+import type { Content } from '~/types';
+import { formatDate } from '~/utils';
+
 interface Props {
   contents_show: boolean;
-  contents: Object;
+  contents: readonly Content[];
 }
 
 const props = defineProps<Props>();
 
-const dateFommter = (date: string) => {
-  const date_object = new Date(date);
-  return `${date_object.getFullYear()}年${date_object.getMonth() + 1}月${date_object.getDate()}日`;
-};
+const dateFommter = formatDate;
 </script>

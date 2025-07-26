@@ -16,15 +16,17 @@
 
 <script setup lang="ts">
 interface Props {
-  more_btn_show: boolean,
-  text: string,
-  loading: boolean
+  more_btn_show: boolean;
+  text: string;
+  loading: boolean;
 }
-const props = defineProps<Props>()
+
+const props = defineProps<Props>();
 const emits = defineEmits<{
-  (e: 'click-method'): void
-}>()
+  (e: 'click-method'): void;
+}>();
+
 const clickMethod = () => {
-  emits('click-method')
-}
+  emits('click-method');
+};
 </script>

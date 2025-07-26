@@ -5,12 +5,9 @@
 </template>
 
 <script setup lang="ts">
-
 interface Props {
-    title: String;
+    title: string;
 }
 
-const props = defineProps<Props>();
-const title = props.title;
-
+defineProps<Props>();
 </script>

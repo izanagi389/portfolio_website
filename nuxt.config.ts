@@ -13,9 +13,8 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxtjs/sitemap'
   ],
-  tailwindcss: {
-    exposeConfig: true,
-    viewer: true
+  experimental: {
+    payloadExtraction: false
   },
   compatibilityDate: '2024-07-06',
   css: ['assets/css/main.css'],
@@ -60,8 +59,6 @@ export default defineNuxtConfig({
         {
           rel: 'stylesheet',
           href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css',
-          integrity:
-            'sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==',
           crossorigin: 'anonymous',
           referrerpolicy: 'no-referrer'
         }
@@ -79,7 +76,10 @@ export default defineNuxtConfig({
     build: {
       target: ['es2022', 'edge89', 'firefox89', 'chrome89', 'safari15']
     },
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['@headlessui/vue', '@heroicons/vue']
+    }
   },
   build: {
     transpile: ['lodash-es', 'shiki']
@@ -87,10 +87,10 @@ export default defineNuxtConfig({
   nitro: {
     esbuild: {
       options: {
-        // Node.js のバージョンのみ指定すればOK
         target: 'es2022'
       }
-    }
+    },
+    compressPublicAssets: true
   },
 
   routeRules: {

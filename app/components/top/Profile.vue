@@ -28,27 +28,8 @@
 </template>
 
 <script setup lang="ts">
-const profile = {
-  ncikname: {
-    title: "ニックネーム",
-    content: "Izanagi",
-  },
-  hobby: {
-    title: "趣味",
-    content: "ゲーム（RPG系）・酒（日本酒やビールが好き！）・ラーメン巡り",
-  },
-};
+import { PROFILE, ACCOUNTS } from '~/constants';
 
-const account = [
-  {
-    name: "X（旧Twitter）",
-    href: "https://x.com/izanagiblog",
-    class: "fa-brands fa-x-twitter bg-black text-white rounded-full p-1",
-  },
-  {
-    name: "Github",
-    href: "https://github.com/izanagi389",
-    class: "fa-brands fa-github fa-xl ml-2",
-  },
-];
+const profile = PROFILE;
+const account = ACCOUNTS;
 </script>

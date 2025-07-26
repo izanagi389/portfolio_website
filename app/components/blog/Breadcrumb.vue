@@ -3,10 +3,10 @@
         <a href="/" class="hover:opacity-50 ml-4 mr-4" ><i class="fa-solid fa-house"></i></a>
         <span>/</span>
         <a href="/blog/" class="hover:opacity-50 ml-4 mr-4" >Articles</a>
-        <template v-for="breadcrumb in props.breadcrumb">
+        <template v-for="(item, index) in breadcrumb">
             <span>/</span>
-            <a v-if="props.breadcrumb.lastIndexOf(breadcrumb) !== props.breadcrumb.length -1" href="/blog/" class="hover:opacity-50 ml-4 mr-4" >{{ breadcrumb }}</a>
-            <span class="ml-4 mr-4" >{{ breadcrumb }}</span>
+            <a v-if="index !== breadcrumb.length - 1" href="/blog/" class="hover:opacity-50 ml-4 mr-4" >{{ item }}</a>
+            <span v-else class="ml-4 mr-4" >{{ item }}</span>
         </template>
                 
     </div>
@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 interface Props {
-    breadcrumb: Object;
+    breadcrumb: string[];
 }
-const props = defineProps<Props>();
+const { breadcrumb } = defineProps<Props>();
 </script>
