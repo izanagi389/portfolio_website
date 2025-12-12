@@ -43,6 +43,10 @@ const { data } = await useAsyncData<BlogPost>("mountains", () =>
 const title = data.value?.title || '';
 const contents = data.value?.blogContent || [];
 
+useSeoMeta ({
+  title: title || '',
+})
+
 // 目次作成
 const content_template = useTemplateRef("content");
 const topic = ref<any[]>([]);
