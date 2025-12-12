@@ -78,7 +78,29 @@ export default defineNuxtConfig({
     },
     plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ['@headlessui/vue', '@heroicons/vue']
+      include: [
+        '@headlessui/vue',
+        '@heroicons/vue',
+        '@heroicons/vue/24/outline',
+        '@heroicons/vue/20/solid',
+        'prismjs',
+        'prismjs/plugins/toolbar/prism-toolbar.min.js',
+        'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js',
+        'prismjs/plugins/inline-color/prism-inline-color.min.js',
+        'prismjs/plugins/line-numbers/prism-line-numbers.min.js',
+        'prismjs/components/prism-apacheconf',
+        'prismjs/components/prism-bash',
+        'prismjs/components/prism-clike',
+        'prismjs/components/prism-css',
+        'prismjs/components/prism-css-extras',
+        'prismjs/components/prism-javascript',
+        'prismjs/components/prism-json',
+        'prismjs/components/prism-markup',
+        'prismjs/components/prism-markup-templating',
+        'prismjs/components/prism-php',
+        'prismjs/components/prism-pug',
+        'prismjs/components/prism-scss'
+      ]
     }
   },
   build: {
