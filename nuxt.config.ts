@@ -108,21 +108,31 @@ export default defineNuxtConfig({
       crossOriginOpenerPolicy: 'same-origin',
       crossOriginEmbedderPolicy: 'credentialless',
       contentSecurityPolicy: {
+        'default-src': ["'self'"],
         'base-uri': ["'none'"],
         'font-src': ["'self'", 'https:', 'data:'],
         'form-action': ["'self'"],
         'frame-ancestors': ["'self'"],
-        'img-src': ["'self'", 'data:', 'images.microcms-assets.io'],
+        'img-src': ["'self'", 'data:', 'https:', 'images.microcms-assets.io'],
         'object-src': ["'none'"],
         'script-src-attr': ["'none'"],
-        'style-src': ["'self'", 'https:', "'unsafe-inline'"],
-        'script-src': [
+        'script-src-elem': [
           "'self'",
-          'https:',
-          "'unsafe-inline'",
+          "'strict-dynamic'",
           "'nonce-{{nonce}}'",
+          'https://platform.twitter.com',
           'https://vercel.live'
         ],
+        'style-src': ["'self'", 'https:', "'unsafe-inline'"],
+        'style-src-elem': ["'self'", 'https:', "'unsafe-inline'"],
+        'style-src-attr': ["'unsafe-inline'"],
+        'connect-src': [
+          "'self'",
+          'https:',
+          'https://vercel.live'
+        ],
+        'worker-src': ["'self'", 'blob:'],
+        'manifest-src': ["'self'"],
         'upgrade-insecure-requests': true
       },
       originAgentCluster: '?1',
